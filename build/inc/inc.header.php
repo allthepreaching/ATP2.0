@@ -150,9 +150,59 @@
     </div>
 
     <!-- Side Nav -->
-    <div class="side-nav bg-black text-white h-screen w-1/5 fixed top-0 left-0 overflow-auto">
-        <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 1</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 2</a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 3</a>
-        <!-- ... -->
+    <div class="side-nav-container opacity-50 bg-black text-white h-screen w-96 fixed top-0 left-0 overflow-auto border border-r-gray-700 lg:block hidden">
+
+        <!-- Side Nav Header -->
+        <div class="side-nav-header flex flex-row w-full items-center justify-start px-4 py-2">
+
+            <!-- Side Nav Toggle -->
+            <div class="side-nav-toggle-container flex items-center justify-start w-12 h-12">
+                <svg fill="#ff0011" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
+                </svg>
+            </div>
+
+            <!-- Side Nav Logo -->
+            <div class="side-nav-logo-container rounded">
+                <a href="index.php" class="no-underline text-gray-800 text-base font-bold transition-colors duration-300 ease-in-out hover:text-yellow-600 hover:text-shadow-md">
+                    <img src="img/atp-logo.png" class="nav-top-logo border-2 border-red-700 w-28" alt="ALLthePREACHING">
+                </a>
+            </div>
+        </div>
+
+        <!-- Side Nav Top -->
+        <div class="side-nav-top w-full flex flex-col">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 1</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 2</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 3</a>
+        </div>
+    </div>
+
+    <!-- Side Nav Overlay-->
+    <div class="side-nav-container opacity-50 bg-black text-white h-screen w-96 fixed top-0 left-0 overflow-auto border border-r-gray-700 block lg:hidden">
+
+        <!-- Side Nav Overlay Header -->
+        <div class="side-nav-overlay-header flex flex-row w-full items-center justify-start px-4 py-2">
+
+            <!-- Side Nav Overlay Toggle -->
+            <div class="side-nav-overlay-toggle-container flex items-center justify-start w-12 h-12">
+                <svg fill="#ff0011" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
+                </svg>
+            </div>
+
+            <!-- Side Nav Overlay Logo -->
+            <div class="side-nav-overlay-logo-container rounded">
+                <a href="index.php" class="no-underline text-gray-800 text-base font-bold transition-colors duration-300 ease-in-out hover:text-yellow-600 hover:text-shadow-md">
+                    <img src="img/atp-logo.png" class="nav-top-logo border-2 border-red-700 w-28" alt="ALLthePREACHING">
+                </a>
+            </div>
+        </div>
+
+        <!-- Side Nav Overlay Top -->
+        <div class="side-nav-overlay-top w-full flex flex-col">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 1</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 2</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 3</a>
+        </div>
     </div>
