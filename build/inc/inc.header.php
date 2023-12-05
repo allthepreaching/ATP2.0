@@ -1,6 +1,5 @@
-<?php
-include_once 'inc/inc.wamp.php';
-?>
+<?php include_once 'inc/inc.wamp.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <!-- Head -->
@@ -21,7 +20,7 @@ include_once 'inc/inc.wamp.php';
     <meta property="og:description" content="Everything NIFB." />
     <meta property="og:url" content="http://www.allthepreaching.com" />
     <meta property="og:image" content="https://atp.allthepreaching.com/atp/images/ATP_FB_BANNER_Pastor_Collage.png" />
-    <meta property="og:image:alt" content="All The Preaching" />
+    <meta property="og:image:alt" content="ALLthePREACHING" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
@@ -42,17 +41,24 @@ include_once 'inc/inc.wamp.php';
 <body class="bg-black">
     <!-- Top Nav -->
     <div class="top-nav-cont bg-black w-full">
-        <nav class="nav-top w-full flex flex-row items-center justify-between p-2">
+        <nav class="nav-top w-full flex flex-row items-center justify-between px-4 py-2">
+
+            <!-- Side Nav Toggle -->
+            <div class="side-nav-toggle-container flex items-center justify-center w-12 h-12 mr-4">
+                <svg fill="#ffffff" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
+                </svg>
+            </div>
 
             <!-- Logo -->
-            <div class="nav-top-logo-cont rounded">
+            <div class="nav-top-logo-cont rounded mr-4">
                 <a href="index.php" class="no-underline text-gray-800 text-base font-bold transition-colors duration-300 ease-in-out hover:text-yellow-600 hover:text-shadow-md">
                     <img src="img/atp-logo.png" class="nav-top-logo w-36" alt="ALLthePREACHING">
                 </a>
             </div>
 
             <!-- Search Bar & Mic -->
-            <div class="search-mic-container flex flex-row items-center justify-between h-full min-w-fit">
+            <div class="search-mic-container flex flex-row items-center justify-between h-full w-full mr-4">
 
                 <!-- Search Bar -->
                 <div class="search-container flex justify-between items-center w-full h-12 px-4 py-2 border border-gray-700 rounded-full">
@@ -141,4 +147,12 @@ include_once 'inc/inc.wamp.php';
                 </div>
             </div>
         </nav>
+    </div>
+
+    <!-- Side Nav -->
+    <div class="side-nav bg-black text-white h-screen w-1/5 fixed top-0 left-0 overflow-auto">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 1</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 2</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 3</a>
+        <!-- ... -->
     </div>
