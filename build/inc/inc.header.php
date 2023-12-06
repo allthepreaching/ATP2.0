@@ -39,40 +39,55 @@
 <!-- Body -->
 
 <body class="bg-black">
+
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+
     <!-- Top Nav -->
-    <div class="top-nav-cont bg-black w-full">
-        <nav class="nav-top w-full flex flex-row items-center justify-between px-4 py-2">
 
-            <!-- Side Nav Toggle -->
-            <div class="side-nav-toggle-container flex items-center justify-center w-12 h-12 mr-4">
-                <svg fill="#ffffff" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
-                </svg>
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+
+    <!-- Top Nav Container -->
+    <div class="bg-black w-full fixed top-0">
+
+        <!-- Top Nav -->
+        <nav class="w-full flex flex-row items-center justify-between px-4 py-2">
+
+            <!-- Top Nav Toggle Logo Container -->
+            <div class="flex flex-row items-center justify-between w-60 h-auto">
+
+                <!-- Top Nav Toggle -->
+                <div class="flex items-center justify-center w-12 h-12 mr-4">
+                    <svg fill="#ffffff" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
+                    </svg>
+                </div>
+
+                <!-- Top Nav Logo -->
+                <div class="mr-4">
+                    <a href="index.php">
+                        <img src="img/atp-logo-2.png" class="w-50 ml-7" alt="ALLthePREACHING">
+                    </a>
+                </div>
             </div>
 
-            <!-- Logo -->
-            <div class="nav-top-logo-cont rounded mr-4">
-                <a href="index.php" class="no-underline text-gray-800 text-base font-bold transition-colors duration-300 ease-in-out hover:text-yellow-600 hover:text-shadow-md">
-                    <img src="img/atp-logo.png" class="nav-top-logo w-36" alt="ALLthePREACHING">
-                </a>
-            </div>
+            <!-- Top Nav Search Bar & Mic -->
+            <div class="flex flex-row items-center justify-between h-full w-96 lg:w-2/5">
 
-            <!-- Search Bar & Mic -->
-            <div class="search-mic-container flex flex-row items-center justify-between h-full w-full mr-4">
-
-                <!-- Search Bar -->
-                <div class="search-container flex justify-between items-center w-full h-12 px-4 py-2 border border-gray-700 rounded-full">
-                    <input type="text" class="search-bar flex-grow bg-black text-white rounded-full h-full text-lg px-4" placeholder="Search...">
-                    <div class="search-icon-container text-white px-4 border-l-gray-700">
-                        <svg class="search-icon w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Top Nav Search Bar -->
+                <div class="flex justify-between items-center w-full h-12 bg-[#990000] border border-[#990000] rounded-full">
+                    <input type="text" class="flex-grow bg-black text-white rounded-full h-full text-lg px-4" placeholder="Search...">
+                    <div class="flex items-center justify-center text-white px-4 h-full border-l border-l-[#990000]">
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
                     </div>
                 </div>
 
-                <!-- Search Mic -->
-                <div class="microphone-container flex justify-center items-center w-12 h-12 border border-gray-700 rounded-full p-1 ml-2">
+                <!-- Top Nav Search Mic -->
+                <div class="flex justify-center items-center w-12 h-12 bg-[#990000] border border-[#990000] rounded-full p-1 ml-2">
                     <a href="#">
                         <svg fill="#ffffff" class="w-10 h-6" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
                             <g>
@@ -84,11 +99,11 @@
                 </div>
             </div>
 
-            <!-- Login & Profile -->
-            <div class="login-profile-container flex flex-row items-center justify-between">
+            <!-- Top Nav Login Notifications Upload & Profile Container -->
+            <div class="flex flex-row items-center justify-between">
 
-                <!-- Upload -->
-                <div class="icon-container flex justify-center items-center w-12 h-12 border border-gray-700 rounded-full p-1 ml-2">
+                <!-- Top Nav Upload -->
+                <div class="flex justify-center items-center w-12 h-12 border border-[#990000] rounded-full p-1 ml-2">
                     <a href="#">
                         <svg fill="#ffffff" class="w-8 h-6" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
                             <g>
@@ -98,18 +113,18 @@
                     </a>
                 </div>
 
-                <!-- Notifications -->
-                <div class="icon-container flex justify-center items-center w-12 h-12 border border-gray-700 rounded-full p-1 ml-2 relative">
+                <!-- Top Nav Notifications -->
+                <div class="flex justify-center items-center w-12 h-12 border border-[#990000] rounded-full p-1 ml-2 relative">
                     <a href="#">
                         <svg class="w-8 h-6" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.00195 17H5.60636C4.34793 17 3.71872 17 3.58633 16.9023C3.4376 16.7925 3.40126 16.7277 3.38515 16.5436C3.37082 16.3797 3.75646 15.7486 4.52776 14.4866C5.32411 13.1835 6.00031 11.2862 6.00031 8.6C6.00031 7.11479 6.63245 5.69041 7.75766 4.6402C8.88288 3.59 10.409 3 12.0003 3C13.5916 3 15.1177 3.59 16.2429 4.6402C17.3682 5.69041 18.0003 7.11479 18.0003 8.6C18.0003 11.2862 18.6765 13.1835 19.4729 14.4866C20.2441 15.7486 20.6298 16.3797 20.6155 16.5436C20.5994 16.7277 20.563 16.7925 20.4143 16.9023C20.2819 17 19.6527 17 18.3943 17H15.0003M9.00195 17L9.00031 18C9.00031 19.6569 10.3435 21 12.0003 21C13.6572 21 15.0003 19.6569 15.0003 18V17M9.00195 17H15.0003" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <div class="absolute bottom-0 left-0 w-3 h-3 bg-red-500 rounded-full z-10"></div>
+                    <div class="absolute bottom-0 left-0 w-3 h-3 bg-orange-400 rounded-full z-10"></div>
                 </div>
 
-                <!-- Profile -->
-                <div class="icon-container flex justify-center items-center w-12 h-12 border border-gray-700 rounded-full p-1 ml-2">
+                <!-- Top Nav Profile -->
+                <div class="flex justify-center items-center w-12 h-12 border border-[#990000] rounded-full p-1 ml-2">
                     <a href="#">
                         <svg class="w-8 h-6" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -131,8 +146,8 @@
                     </a>
                 </div>
 
-                <!-- Login -->
-                <div class="icon-container flex justify-center items-center w-12 h-12 border border-gray-700 rounded-full p-1 ml-2">
+                <!-- Top Nav Login -->
+                <div class="flex justify-center items-center w-12 h-12 border border-[#990000] rounded-full p-1 ml-2">
                     <a href="#">
                         <svg fill="#ffffff" class="w-8 h-6" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
                             <g>
@@ -149,60 +164,130 @@
         </nav>
     </div>
 
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+
     <!-- Side Nav -->
-    <div class="side-nav-container opacity-50 bg-black text-white h-screen w-96 fixed top-0 left-0 overflow-auto border border-r-gray-700 lg:block hidden">
+
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+
+    <!-- Side Nav Container -->
+    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 lg:block hidden">
 
         <!-- Side Nav Header -->
-        <div class="side-nav-header flex flex-row w-full items-center justify-start px-4 py-2">
+        <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-8 sticky top-0">
 
             <!-- Side Nav Toggle -->
-            <div class="side-nav-toggle-container flex items-center justify-start w-12 h-12">
-                <svg fill="#ff0011" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <div class="flex items-center justify-start w-12 h-12 ml-2">
+                <svg fill="#ffffff" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
                 </svg>
             </div>
 
             <!-- Side Nav Logo -->
-            <div class="side-nav-logo-container rounded">
-                <a href="index.php" class="no-underline text-gray-800 text-base font-bold transition-colors duration-300 ease-in-out hover:text-yellow-600 hover:text-shadow-md">
-                    <img src="img/atp-logo.png" class="nav-top-logo border-2 border-red-700 w-28" alt="ALLthePREACHING">
+            <div class="ml-4">
+                <a href="index.php">
+                    <img src="img/atp-logo-2.png" class="border-2 border-red-700 w-60" alt="ALLthePREACHING">
                 </a>
             </div>
         </div>
 
-        <!-- Side Nav Top -->
-        <div class="side-nav-top w-full flex flex-col">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 1</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 2</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 3</a>
+        <!-- Side Nav Section 1 Container -->
+        <div class="w-[87%] flex flex-col ml-6">
+
+            <!-- Home Container -->
+            <div class="flex flex-row items-center justify-start mb-4 py-2 rounded-lg bg-gray-800">
+
+                <!-- Home Icon -->
+                <div class="mr-8 ml-2">
+                    <svg class="w-6 h-6" viewBox="0 -0.5 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                        <title>home [#1391]</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs>
+
+                        </defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-419.000000, -720.000000)" fill="#990000">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path d="M379.79996,578 L376.649968,578 L376.649968,574 L370.349983,574 L370.349983,578 L367.19999,578 L367.19999,568.813 L373.489475,562.823 L379.79996,568.832 L379.79996,578 Z M381.899955,568.004 L381.899955,568 L381.899955,568 L373.502075,560 L363,569.992 L364.481546,571.406 L365.099995,570.813 L365.099995,580 L372.449978,580 L372.449978,576 L374.549973,576 L374.549973,580 L381.899955,580 L381.899955,579.997 L381.899955,570.832 L382.514204,571.416 L384.001,570.002 L381.899955,568.004 Z" id="home-[#1391]">
+
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <!-- Home Label -->
+                <div class="font-bold">
+                    Home
+                </div>
+            </div>
+
+            <!-- Shorts Container -->
+            <div class="flex flex-row items-center justify-start mb-4 py-2 rounded-lg">
+
+                <!-- Shorts Icon -->
+                <div class="mr-8 ml-2">
+                    <svg fill="#990000" class="w-6 h-6" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <title>video</title>
+                        <path d="M0 26.016q0 2.496 1.76 4.224t4.256 1.76h20q2.464 0 4.224-1.76t1.76-4.224v-20q0-2.496-1.76-4.256t-4.224-1.76h-20q-2.496 0-4.256 1.76t-1.76 4.256v20zM4 26.016v-20q0-0.832 0.576-1.408t1.44-0.608h20q0.8 0 1.408 0.608t0.576 1.408v20q0 0.832-0.576 1.408t-1.408 0.576h-20q-0.832 0-1.44-0.576t-0.576-1.408zM6.016 24h1.984v2.016h2.016v-20h-4v1.984h1.984v2.016h-1.984v1.984h1.984v2.016h-1.984v1.984h1.984v2.016h-1.984v1.984h1.984v2.016h-1.984v1.984zM12 26.016h8v-4h-8v4zM12 20h8v-8h-8v8zM12 10.016h8v-4h-8v4zM22.016 26.016h1.984v-2.016h2.016v-1.984h-2.016v-2.016h2.016v-1.984h-2.016v-2.016h2.016v-1.984h-2.016v-2.016h2.016v-1.984h-2.016v-2.016h2.016v-1.984h-4v20z"></path>
+                    </svg>
+                </div>
+                <!-- Shorts Label -->
+                <div class="font-bold">
+                    Shorts
+                </div>
+            </div>
+
+            <!-- Subscriptions Container -->
+            <div class="flex flex-row items-center justify-start mb-4 py-2 rounded-lg">
+
+                <!-- Subscriptions Icon -->
+                <div class="mr-8 ml-2">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 2H6v2h12V2zM4 6h16v2H4V6zm-2 4h20v12H2V10zm18 10v-8H4v8h16z" fill="#990000" />
+                    </svg>
+                </div>
+                <!-- Subscriptions Label -->
+                <div class="font-bold">
+                    Subscriptions
+                </div>
+            </div>
+
+            <!-- Music Container -->
+            <div class="flex flex-row items-center justify-start mb-4 py-2 rounded-lg">
+
+                <!-- Music Icon -->
+                <div class="mr-8 ml-2">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.38351 13.793C1.93748 10.6294 1.71447 9.04765 2.66232 8.02383C3.61017 7 5.29758 7 8.67239 7H15.3276C18.7024 7 20.3898 7 21.3377 8.02383C22.2855 9.04765 22.0625 10.6294 21.6165 13.793L21.1935 16.793C20.8437 19.2739 20.6689 20.5143 19.7717 21.2572C18.8745 22 17.5512 22 14.9046 22H9.09536C6.44881 22 5.12553 22 4.22834 21.2572C3.33115 20.5143 3.15626 19.2739 2.80648 16.793L2.38351 13.793Z" stroke="#990000" stroke-width="1.5" />
+                        <path d="M12 17C12 17.8284 11.3284 18.5 10.5 18.5C9.67157 18.5 9 17.8284 9 17C9 16.1716 9.67157 15.5 10.5 15.5C11.3284 15.5 12 16.1716 12 17ZM12 17V10.5C12 12.1569 13.8954 13.5 15 13.5" stroke="#990000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M19.5617 7C19.7904 5.69523 18.7863 4.5 17.4617 4.5H6.53788C5.21323 4.5 4.20922 5.69523 4.43784 7" stroke="#990000" stroke-width="1.5" />
+                        <path d="M17.4999 4.5C17.5283 4.24092 17.5425 4.11135 17.5427 4.00435C17.545 2.98072 16.7739 2.12064 15.7561 2.01142C15.6497 2 15.5194 2 15.2588 2H8.74099C8.48035 2 8.35002 2 8.24362 2.01142C7.22584 2.12064 6.45481 2.98072 6.45704 4.00434C6.45727 4.11135 6.47146 4.2409 6.49983 4.5" stroke="#990000" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <!-- Music Label -->
+                <div class="font-bold">
+                    Spiritual Music
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Nav Section Separator -->
+        <div class="border-t border-t-[#990000] w-3/4 mb-4 mx-auto"></div>
+
+        <!-- Side Nav Footer -->
+        <div>
+            <?php include_once 'inc/inc.footer.php'; ?>
         </div>
     </div>
 
-    <!-- Side Nav Overlay-->
-    <div class="side-nav-container opacity-50 bg-black text-white h-screen w-96 fixed top-0 left-0 overflow-auto border border-r-gray-700 block lg:hidden">
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
 
-        <!-- Side Nav Overlay Header -->
-        <div class="side-nav-overlay-header flex flex-row w-full items-center justify-start px-4 py-2">
+    <!-- Side Nav Overlay -->
 
-            <!-- Side Nav Overlay Toggle -->
-            <div class="side-nav-overlay-toggle-container flex items-center justify-start w-12 h-12">
-                <svg fill="#ff0011" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
-                </svg>
-            </div>
-
-            <!-- Side Nav Overlay Logo -->
-            <div class="side-nav-overlay-logo-container rounded">
-                <a href="index.php" class="no-underline text-gray-800 text-base font-bold transition-colors duration-300 ease-in-out hover:text-yellow-600 hover:text-shadow-md">
-                    <img src="img/atp-logo.png" class="nav-top-logo border-2 border-red-700 w-28" alt="ALLthePREACHING">
-                </a>
-            </div>
-        </div>
-
-        <!-- Side Nav Overlay Top -->
-        <div class="side-nav-overlay-top w-full flex flex-col">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 1</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 2</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-700">Item 3</a>
-        </div>
-    </div>
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
