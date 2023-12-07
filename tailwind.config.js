@@ -14,5 +14,20 @@ module.exports = {
       borderWidth: { right: "0" },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        ".side-nav-container::-webkit-scrollbar": { display: "none" },
+        ".side-nav-container": {
+          "-ms-overflow-style": "none",
+          scrollbarWidth: "none",
+          ".side-nav-overlay-container::-webkit-scrollbar": { display: "none" },
+          ".side-nav-overlay-container": {
+            "-ms-overflow-style": "none",
+            scrollbarWidth: "none",
+          },
+        },
+      });
+    },
+  ],
 };

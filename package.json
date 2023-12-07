@@ -1,7 +1,6 @@
 {
   "name": "atp5",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "any-promise": "^1.3.0",
@@ -85,5 +84,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }
