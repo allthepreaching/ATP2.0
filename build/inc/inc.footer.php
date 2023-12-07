@@ -1,22 +1,11 @@
 <!-- Footer Container -->
-<footer class="w-full bg-black h-full mt-20">
+<footer class="w-full bg-black h-full mt-2">
 
     <!-- Footer Column -->
     <div class="flex flex-col items-center">
 
         <!-- Row 1 -->
         <div class="w-full px-1 box-border text-center">
-
-            <!-- Logo -->
-            <div>
-                <a href="index.php">
-                    <img src="img/atp-logo-2.png" class="w-50" alt="ALLthePREACHING">
-                </a>
-            </div>
-
-
-            <!-- Side Nav Section Separator -->
-            <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
             <!-- Verse -->
             <p class="flex flex-col items-center justify-center text-sm text-white m-0 p-0">
