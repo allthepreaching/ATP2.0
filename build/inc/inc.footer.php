@@ -16,7 +16,7 @@
 
 
             <!-- Side Nav Section Separator -->
-            <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+            <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
             <!-- Verse -->
             <p class="flex flex-col items-center justify-center text-sm text-white m-0 p-0">
@@ -27,13 +27,13 @@
             </p>
 
             <!-- Side Nav Section Separator -->
-            <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+            <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
             <!-- Special Thanks -->
             <a href="#" class="text-white text-xl hover:text-[#990000] transition-colors duration-300">Special Thanks Here</a>
 
             <!-- Side Nav Section Separator -->
-            <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+            <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
             <!-- Social Links -->
             <div class="social-footer flex flex-row items-center justify-between">
@@ -46,7 +46,7 @@
             </div>
 
             <!-- Side Nav Section Separator -->
-            <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+            <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
             <!-- Email Link -->
             <a href="mailto:admin@allthepreaching.com" class="text-white hover:text-[#990000] transition-colors duration-300 flex flex-col items-center justify-center">
@@ -56,7 +56,7 @@
         </div>
 
         <!-- Side Nav Section Separator -->
-        <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+        <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
         <!-- Row 2 -->
         <div class="w-full px-1 box-border text-center">
@@ -81,7 +81,7 @@
         </div>
 
         <!-- Side Nav Section Separator -->
-        <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+        <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
         <!-- Row 3 -->
         <div class="w-full px-1 box-border">
@@ -95,7 +95,7 @@
         </div>
 
         <!-- Side Nav Section Separator -->
-        <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+        <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
         <!-- Row 4 -->
         <div class="w-full px-1 box-border text-center">
@@ -118,7 +118,7 @@
         </div>
 
         <!-- Side Nav Section Separator -->
-        <div class="border-t border-t-[#990000] w-3/4 my-4 mx-auto"></div>
+        <div class="border-t border-t-[#990000] w-5/6 my-4 mx-auto"></div>
 
         <!-- Row 5 -->
         <div class="w-full mb-8 px-1 box-border flex flex-col items-center justify-center">
