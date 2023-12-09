@@ -53,7 +53,7 @@
     <div class="bg-black w-full fixed top-0">
 
         <!-- Top Nav -->
-        <nav class="w-full flex flex-row items-center justify-between px-4 py-2">
+        <nav class="w-full flex flex-row items-center justify-between px-4 pt-2">
 
             <!-- Top Nav Toggle Logo Container -->
             <div class="flex flex-row items-center justify-between w-60 h-auto">

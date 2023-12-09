@@ -4,10 +4,10 @@
 <div class="flex flex-col items-center justify-start fixed top-16 w-[calc(100vw-289px)] h-full bg-black translate-x-72">
 
     <!-- Tags Bar -->
-    <div class="tags-bar-container w-full flex flex-row items-center justify-left bg-black text-white p-2">
+    <div class="w-full flex flex-row items-center justify-left bg-black text-white">
 
         <!-- Left Arrow -->
-        <div class="arrow-left mr-1">
+        <div class="arrow-left mr-1 hover:">
             <svg class="w-6 h-6 " viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 
                 <title>arrow-left-circle</title>
@@ -26,7 +26,7 @@
         </div>
 
         <!-- Tags -->
-        <div class="tags flex flex-row overflow-x-auto">
+        <div class="tags flex flex-row overflow-x-auto pb-4">
 
             <!-- Start Tag -->
             <div class='tag-start'></div>
