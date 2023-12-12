@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="css/output.css">
     <link rel="stylesheet" href="css/custom.css">
 
+    <!-- Scripts -->
+    <script src="js/video-menu.js" defer></script>
+
     <!-- Title -->
     <title>ALLthePREACHING</title>
 </head>
