@@ -35,7 +35,9 @@
     <link rel="stylesheet" href="css/custom.css">
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="js/video-menu.js" defer></script>
+    <script src="js/image-overlay.js" defer></script>
 
     <!-- Title -->
     <title>ALLthePREACHING</title>
@@ -171,7 +173,7 @@
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
 
     <!-- Side Nav Container -->
-    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 lg:block hidden">
+    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 md:block hidden">
 
         <!-- Side Nav Header -->
         <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-8 sticky top-0">
