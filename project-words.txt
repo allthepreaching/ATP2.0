@@ -30,6 +30,7 @@ jiti
 kjvo
 laudantium
 lilconfig
+Miniplayer
 namedview
 neque
 obcaecati
@@ -57,6 +58,7 @@ Soulwinning
 suscipit
 svgrepo
 thenify
+tooltiplast
 trib
 ugetube
 ullam
