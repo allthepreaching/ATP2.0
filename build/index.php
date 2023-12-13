@@ -1,10 +1,10 @@
 <?php include_once 'inc/inc.header.php'; ?>
 
 <!-- Home Page -->
-<div class="flex flex-col items-center justify-start fixed top-16 w-[calc(100vw-289px)] h-full bg-black translate-x-72">
+<div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
 
     <!-- Tags Bar -->
-    <div class="w-full flex flex-row items-center justify-left bg-black text-white fixed top-9">
+    <div class="w-full flex flex-row items-center justify-left bg-black text-white fixed top-5">
 
         <!-- Arrows Overlay -->
         <div class="absolute inset-0 flex items-center justify-between -mx-1 pb-4 pointer-events-none">
@@ -25,13 +25,13 @@
         </div>
 
         <!-- Tags -->
-        <div class="tags flex flex-row overflow-x-auto pb-4">
+        <div class="tags flex flex-row overflow-x-auto pb-4 px-3">
 
             <!-- Start Tag -->
             <div class='tag-start'></div>
 
             <!-- All Tag -->
-            <div class='tag whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-white text-black rounded-lg text-sm'>All</div>
+            <div class='tag whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-white text-black rounded-lg text-sm'>All Videos</div>
 
             <?php
 
@@ -60,7 +60,7 @@
     <div class="w-full h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-auto pt-4 pb-10">
 
         <!-- Newest Weekly Videos -->
-        <div class="w-full flex flex-row items-center justify-start bg-black font-bold text-white text-2xl px-2 mb-1">
+        <div class="w-full flex flex-row items-center justify-start bg-black font-bold text-white text-2xl pl-4 mb-2">
             Newest Weekly Videos
         </div>
         <div class="w-full flex flex-row items-center justify-left bg-black text-white px-2 relative">
@@ -85,7 +85,7 @@
             </div>
 
             <!-- Video Cards -->
-            <div class="flex flex-row overflow-x-auto mb-4 pb-4">
+            <div class="flex flex-row overflow-x-auto mb-4 pb-4 px-3">
 
                 <!-- Video Card -->
                 <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0">
