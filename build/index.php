@@ -1,7 +1,7 @@
 <?php include_once 'inc/inc.header.php'; ?>
 
 <!-- Home Page -->
-<div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
+<div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
 
     <!-- Tags Bar -->
     <div class="w-full flex flex-row items-center justify-left bg-black text-white fixed top-5">
