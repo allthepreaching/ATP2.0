@@ -44,7 +44,7 @@
 </head>
 <!-- Body -->
 
-<body class="bg-black">
+<body class="relative bg-black" x-data="{ open: false }">
 
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
@@ -64,7 +64,7 @@
             <div class="flex flex-row items-center justify-between w-60 h-auto">
 
                 <!-- Top Nav Toggle -->
-                <div class="flex items-center justify-center w-12 h-12 mr-4">
+                <div class="flex items-center justify-center w-12 h-12 ml-3" @click="open = !open">
                     <svg fill="#ffffff" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
                     </svg>
@@ -173,13 +173,13 @@
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
 
     <!-- Side Nav Container -->
-    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 md:block hidden">
+    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 flex-shrink-0 transition-all duration-500 md:block hidden" :class="{ 'w-0 invisible': !open, 'w-72 visible': open }">
 
         <!-- Side Nav Header -->
-        <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-8 sticky top-0">
+        <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-4 sticky top-0">
 
             <!-- Side Nav Toggle -->
-            <div class="flex items-center justify-start w-12 h-12 ml-2">
+            <div class="flex items-center justify-start w-12 h-12 ml-2" @click="open = !open">
                 <svg fill="#ffffff" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
                 </svg>
