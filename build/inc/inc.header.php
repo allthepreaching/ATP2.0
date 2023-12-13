@@ -32,6 +32,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="js/video-menu.js" defer></script>
+    <script src="js/image-overlay.js" defer></script>
 
     <!-- Title -->
     <title>ALLthePREACHING</title>
@@ -52,7 +58,7 @@
     <div class="bg-black w-full fixed top-0">
 
         <!-- Top Nav -->
-        <nav class="w-full flex flex-row items-center justify-between px-4 py-2">
+        <nav class="w-full flex flex-row items-center justify-between px-4 pt-2">
 
             <!-- Top Nav Toggle Logo Container -->
             <div class="flex flex-row items-center justify-between w-60 h-auto">
@@ -167,7 +173,7 @@
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
 
     <!-- Side Nav Container -->
-    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 lg:block hidden">
+    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 md:block hidden">
 
         <!-- Side Nav Header -->
         <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-8 sticky top-0">
@@ -1296,7 +1302,7 @@
                         </style>
                         <g>
                             <rect x="54.929" y="284.162" class="st0" width="402.142" height="24.109" />
-                            <polygon class="st0" points="75.036,384.717 97.463,384.717 97.463,355.746 414.537,355.746 414.537,384.717 436.965,384.717 
+                            <polygon class="st0" points="75.036,384.717 97.463,384.717 97.463,355.746 414.537,355.746 414.537,384.717 436.965,384.717
 		457.071,321.279 54.929,321.279 	" />
                             <rect x="111.121" y="369.396" class="st0" width="289.759" height="142.604" />
                             <circle class="st0" cx="256" cy="69.512" r="69.512" />
