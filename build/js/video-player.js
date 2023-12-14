@@ -1,194 +1,211 @@
-// Custom Video Player
+const playPauseBtn = document.querySelector(".play-pause-btn");
+const theaterBtn = document.querySelector(".theater-btn");
+const fullScreenBtn = document.querySelector(".full-screen-btn");
+const miniPlayerBtn = document.querySelector(".mini-player-btn");
+const muteBtn = document.querySelector(".mute-btn");
+const speedBtn = document.querySelector(".speed-btn");
+const currentTimeElem = document.querySelector(".current-time");
+const totalTimeElem = document.querySelector(".total-time");
+const previewImg = document.querySelector(".preview-img");
+const thumbnailImg = document.querySelector(".thumbnail-img");
+const volumeSlider = document.querySelector(".volume-slider");
+const videoContainer = document.querySelector(".video-container");
+const timelineContainer = document.querySelector(".timeline-container");
+const video = document.querySelector("video");
 
-// Variables
-const container = document.querySelector(".container"),
-  video = document.getElementById("myVideo"),
-  fileInput = document.getElementById("fileInput"),
-  mainVideo = container.querySelector("video"),
-  videoTimeline = container.querySelector(".video-timeline"),
-  progressBar = container.querySelector(".progress-bar"),
-  volumeTitle = container.querySelector(".volume"),
-  volumeBtn = container.querySelector(".volume span"),
-  volumeSlider = container.querySelector(".left input"),
-  currentVidTime = container.querySelector(".current-time"),
-  videoDuration = container.querySelector(".video-duration"),
-  skipBackward = container.querySelector(".skip-backward span"),
-  skipForward = container.querySelector(".skip-forward span"),
-  playPauseTitle = container.querySelector(".play-pause"),
-  playPauseBtn = container.querySelector(".play-pause span"),
-  speedBtn = container.querySelector(".playback-speed span"),
-  speedOptions = container.querySelector(".speed-options"),
-  pipBtn = container.querySelector(".pic-in-pic span"),
-  fullScreenTitle = container.querySelector(".fullscreen"),
-  fullScreenBtn = container.querySelector(".fullscreen span");
-let timer;
+document.addEventListener("keydown", (e) => {
+  const tagName = document.activeElement.tagName.toLowerCase();
 
-// New File
-fileInput.addEventListener("change", function () {
-  const file = this.files[0];
-  const objectURL = URL.createObjectURL(file);
-  video.src = objectURL;
-  mainVideo.play();
-});
+  if (tagName === "input") return;
 
-// Display Volume Range
-volumeBtn.addEventListener("mousemove", () => {
-  volumeSlider.style.display = "block";
-  volumeSlider.style.marginLeft = "3px";
-});
-
-// Hide Controls
-const hideControls = () => {
-  if (mainVideo.paused) return;
-  timer = setTimeout(() => {
-    container.classList.remove("show-controls");
-    volumeSlider.style.display = "none";
-  }, 4000);
-};
-hideControls();
-
-container.addEventListener("mousemove", () => {
-  container.classList.add("show-controls");
-  clearTimeout(timer);
-  hideControls();
-});
-
-// Time Format
-const formatTime = (time) => {
-  let seconds = Math.floor(time % 60),
-    minutes = Math.floor(time / 60) % 60,
-    hours = Math.floor(time / 3600);
-
-  seconds = seconds < 10 ? `0${seconds}` : seconds;
-  minutes = minutes < 10 ? `0${minutes}` : minutes;
-  hours = hours < 10 ? `0${hours}` : hours;
-
-  if (hours == 0) {
-    return `${minutes}:${seconds}`;
+  switch (e.key.toLowerCase()) {
+    case " ":
+      if (tagName === "button") return;
+      break;
+    case "k":
+      togglePlay();
+      break;
+    case "f":
+      toggleFullScreenMode();
+      break;
+    case "t":
+      toggleTheaterMode();
+      break;
+    case "i":
+      toggleMiniPlayerMode();
+      break;
+    case "m":
+      toggleMute();
+      break;
+    case "arrowleft":
+    case "j":
+      skip(-5);
+      break;
+    case "arrowright":
+    case "l":
+      skip(5);
+      break;
+    case "c":
+      toggleCaptions();
+      break;
   }
-  return `${hours}:${minutes}:${seconds}`;
-};
-
-// Video Timeline
-videoTimeline.addEventListener("mousemove", (e) => {
-  let timelineWidth = videoTimeline.clientWidth;
-  let offsetX = e.offsetX;
-  let percent = Math.floor((offsetX / timelineWidth) * mainVideo.duration);
-  const progressTime = videoTimeline.querySelector("span");
-  offsetX =
-    offsetX < 20
-      ? 20
-      : offsetX > timelineWidth - 20
-      ? timelineWidth - 20
-      : offsetX;
-  progressTime.style.left = `${offsetX}px`;
-  progressTime.innerText = formatTime(percent);
 });
 
-videoTimeline.addEventListener("click", (e) => {
-  let timelineWidth = videoTimeline.clientWidth;
-  mainVideo.currentTime = (e.offsetX / timelineWidth) * mainVideo.duration;
+// Timeline
+timelineContainer.addEventListener("mousemove", handleTimelineUpdate);
+timelineContainer.addEventListener("mousedown", toggleScrubbing);
+document.addEventListener("mouseup", (e) => {
+  if (isScrubbing) toggleScrubbing(e);
+});
+document.addEventListener("mousemove", (e) => {
+  if (isScrubbing) handleTimelineUpdate(e);
 });
 
-mainVideo.addEventListener("timeupdate", (e) => {
-  let { currentTime, duration } = e.target;
-  let percent = (currentTime / duration) * 100;
-  progressBar.style.width = `${percent}%`;
-  currentVidTime.innerText = formatTime(currentTime);
+let isScrubbing = false;
+let wasPaused;
+function toggleScrubbing(e) {
+  const rect = timelineContainer.getBoundingClientRect();
+  const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width;
+  isScrubbing = (e.buttons & 1) === 1;
+  videoContainer.classList.toggle("scrubbing", isScrubbing);
+  if (isScrubbing) {
+    wasPaused = video.paused;
+    video.pause();
+  } else {
+    video.currentTime = percent * video.duration;
+    if (!wasPaused) video.play();
+  }
+
+  handleTimelineUpdate(e);
+}
+
+function handleTimelineUpdate(e) {
+  const rect = timelineContainer.getBoundingClientRect();
+  const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width;
+  timelineContainer.style.setProperty("--preview-position", percent);
+
+  if (isScrubbing) {
+    e.preventDefault();
+    timelineContainer.style.setProperty("--progress-position", percent);
+  }
+}
+
+// Playback Speed
+speedBtn.addEventListener("click", changePlaybackSpeed);
+
+function changePlaybackSpeed() {
+  let newPlaybackRate = video.playbackRate + 0.25;
+  if (newPlaybackRate > 2) newPlaybackRate = 0.25;
+  video.playbackRate = newPlaybackRate;
+  speedBtn.textContent = `${newPlaybackRate}x`;
+}
+
+// Duration
+video.addEventListener("loadeddata", () => {
+  totalTimeElem.textContent = formatDuration(video.duration);
 });
 
-mainVideo.addEventListener("loadeddata", () => {
-  videoDuration.innerText = formatTime(mainVideo.duration);
+video.addEventListener("timeupdate", () => {
+  currentTimeElem.textContent = formatDuration(video.currentTime);
+  const percent = video.currentTime / video.duration;
+  timelineContainer.style.setProperty("--progress-position", percent);
 });
 
-const draggableProgressBar = (e) => {
-  let timelineWidth = videoTimeline.clientWidth;
-  progressBar.style.width = `${e.offsetX}px`;
-  mainVideo.currentTime = (e.offsetX / timelineWidth) * mainVideo.duration;
-  currentVidTime.innerText = formatTime(mainVideo.currentTime);
-};
+const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
+  minimumIntegerDigits: 2,
+});
+function formatDuration(time) {
+  const seconds = Math.floor(time % 60);
+  const minutes = Math.floor(time / 60) % 60;
+  const hours = Math.floor(time / 3600);
+  if (hours === 0) {
+    return `${minutes}:${leadingZeroFormatter.format(seconds)}`;
+  } else {
+    return `${hours}:${leadingZeroFormatter.format(
+      minutes
+    )}:${leadingZeroFormatter.format(seconds)}`;
+  }
+}
+
+function skip(duration) {
+  video.currentTime += duration;
+}
 
 // Volume
+muteBtn.addEventListener("click", toggleMute);
 volumeSlider.addEventListener("input", (e) => {
-  mainVideo.volume = e.target.value;
-  if (e.target.value == 0) {
-    volumeTitle.title = "Unmute";
-    return (volumeBtn.textContent = "volume_off");
-  }
-  volumeBtn.textContent = "volume_up";
-  volumeTitle.title = "Mute";
+  video.volume = e.target.value;
+  video.muted = e.target.value === 0;
 });
 
-// Mute & Unmute
-const tempVolume = volumeSlider.value;
+function toggleMute() {
+  video.muted = !video.muted;
+}
 
-volumeBtn.addEventListener("click", () => {
-  if (volumeSlider.value == 0) {
-    mainVideo.volume = tempVolume;
-    volumeBtn.textContent = "volume_up";
-    volumeTitle.title = "Mute";
-    volumeSlider.value = mainVideo.volume;
-  } else if (volumeBtn.innerHTML == "volume_off") {
-    mainVideo.volume = tempVolume;
-    volumeBtn.textContent = "volume_up";
-    volumeTitle.title = "Mute";
+video.addEventListener("volumechange", () => {
+  volumeSlider.value = video.volume;
+  let volumeLevel;
+  if (video.muted || video.volume === 0) {
+    volumeSlider.value = 0;
+    volumeLevel = "muted";
+  } else if (video.volume >= 0.5) {
+    volumeLevel = "high";
   } else {
-    mainVideo.volume = 0.0;
-    volumeBtn.textContent = "volume_off";
-    volumeTitle.title = "Unmute";
+    volumeLevel = "low";
   }
+
+  videoContainer.dataset.volumeLevel = volumeLevel;
 });
 
-// Video Speed
-speedOptions.querySelectorAll("li").forEach((option) => {
-  option.addEventListener("click", () => {
-    mainVideo.playbackRate = option.dataset.speed;
-    speedOptions.querySelector(".active").classList.remove("active");
-    option.classList.add("active");
-  });
-});
+// View Modes
+theaterBtn.addEventListener("click", toggleTheaterMode);
+fullScreenBtn.addEventListener("click", toggleFullScreenMode);
+miniPlayerBtn.addEventListener("click", toggleMiniPlayerMode);
 
-document.addEventListener("click", (e) => {
-  if (
-    e.target.tagName !== "SPAN" ||
-    e.target.className !== "material-symbols-rounded"
-  ) {
-    speedOptions.classList.remove("show");
+function toggleTheaterMode() {
+  videoContainer.classList.toggle("theater");
+}
+
+function toggleFullScreenMode() {
+  if (document.fullscreenElement == null) {
+    videoContainer.requestFullscreen();
+  } else {
+    document.exitFullscreen();
   }
-});
+}
 
-// Full Screen
-fullScreenBtn.addEventListener("click", () => {
-  container.classList.toggle("fullscreen");
-  if (document.fullscreenElement) {
-    fullScreenBtn.textContent = "fullscreen";
-    fullScreenTitle.title = "Full screen";
-    return document.exitFullscreen();
+function toggleMiniPlayerMode() {
+  if (videoContainer.classList.contains("mini-player")) {
+    document.exitPictureInPicture();
+  } else {
+    video.requestPictureInPicture();
   }
-  fullScreenBtn.textContent = "fullscreen_exit";
-  fullScreenTitle.title = "Exit Full screen";
-  container.requestFullscreen();
+}
+
+document.addEventListener("fullscreenchange", () => {
+  videoContainer.classList.toggle("full-screen", document.fullscreenElement);
 });
 
-// Buttons Functions
-speedBtn.addEventListener("click", () => speedOptions.classList.toggle("show"));
-pipBtn.addEventListener("click", () => mainVideo.requestPictureInPicture());
-skipBackward.addEventListener("click", () => (mainVideo.currentTime -= 10));
-skipForward.addEventListener("click", () => (mainVideo.currentTime += 10));
-mainVideo.addEventListener("play", () => {
-  playPauseBtn.textContent = "pause";
-  playPauseTitle.title = "Pause";
+video.addEventListener("enterpictureinpicture", () => {
+  videoContainer.classList.add("mini-player");
 });
-mainVideo.addEventListener("pause", () => {
-  playPauseBtn.textContent = "play_arrow";
-  playPauseTitle.title = "Play";
+
+video.addEventListener("leavepictureinpicture", () => {
+  videoContainer.classList.remove("mini-player");
 });
-playPauseBtn.addEventListener("click", () =>
-  mainVideo.paused ? mainVideo.play() : mainVideo.pause()
-);
-videoTimeline.addEventListener("mousedown", () =>
-  videoTimeline.addEventListener("mousemove", draggableProgressBar)
-);
-document.addEventListener("mouseup", () =>
-  videoTimeline.removeEventListener("mousemove", draggableProgressBar)
-);
+
+// Play/Pause
+playPauseBtn.addEventListener("click", togglePlay);
+video.addEventListener("click", togglePlay);
+
+function togglePlay() {
+  video.paused ? video.play() : video.pause();
+}
+
+video.addEventListener("play", () => {
+  videoContainer.classList.remove("paused");
+});
+
+video.addEventListener("pause", () => {
+  videoContainer.classList.add("paused");
+});

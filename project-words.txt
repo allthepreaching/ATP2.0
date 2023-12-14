@@ -3,6 +3,7 @@ alltdjli
 amet
 anymatch
 architecto
+arrowleft
 Avataaar
 beatae
 berzins
@@ -16,6 +17,7 @@ docname
 eligendi
 elit
 Enim
+enterpictureinpicture
 extglob
 fastq
 fundemental
@@ -29,6 +31,7 @@ ipsam
 jiti
 kjvo
 laudantium
+leavepictureinpicture
 lilconfig
 Miniplayer
 namedview
