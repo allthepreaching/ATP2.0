@@ -23,23 +23,23 @@
     <meta property="og:image:alt" content="ALLthePREACHING" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
-    <link rel="manifest" href="../favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/output.css">
-    <link rel="stylesheet" href="../css/custom.css">
-    <link rel="stylesheet" href="../css/video-player.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/video-player.css">
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="../js/video-menu.js" defer></script>
-    <script src="../js/image-overlay.js" defer></script>
-    <script src="../js/video-player.js" defer></script>
+    <script src="js/video-menu.js" defer></script>
+    <script src="js/image-overlay.js" defer></script>
+    <script src="js/video-player.js" defer></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -79,7 +79,7 @@
                 <!-- Top Nav Logo -->
                 <div class="mr-4">
                     <a href="index.php">
-                        <img src="../img/atp-logo-2.png" class="w-50 ml-7" alt="ALLthePREACHING">
+                        <img src="img/atp-logo-2.png" class="w-50 ml-7" alt="ALLthePREACHING">
                     </a>
                 </div>
             </div>
@@ -194,7 +194,7 @@
             <!-- Side Nav Logo -->
             <div class="ml-4">
                 <a href="index.php">
-                    <img src="../img/atp-logo-2.png" class="border-2 border-red-700 w-60" alt="ALLthePREACHING">
+                    <img src="img/atp-logo-2.png" class="border-2 border-red-700 w-60" alt="ALLthePREACHING">
                 </a>
             </div>
         </div>
