@@ -40,6 +40,7 @@
     <script src="../js/video-menu.js" defer></script>
     <script src="../js/image-overlay.js" defer></script>
     <script src="../js/video-player.js" defer></script>
+    <script src="../js/width-pixels.js"></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />

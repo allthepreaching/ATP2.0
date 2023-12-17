@@ -3,12 +3,11 @@
 <!-- Home Page -->
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
 
-
     <!-- Content -->
-    <div class="w-full h-full flex flex-col items-center justify-center bg-black text-white fixed top-20 overflow-auto pt-4 pb-10">
+    <div class="max-w-[1440px] h-full flex flex-row items-center justify-center gap-2 bg-black text-white">
 
         <!-- Content Left Side -->
-        <div>
+        <div class="w-full md:w-[450px] lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] h-full overflow-y-scroll" id="video-content-left">
 
             <!-- Video Player Container -->
             <div class="video-container paused" data-volume-level="high">
@@ -88,13 +87,18 @@
                 Comments Section
             </div>
 
+            <!-- Suggested Video (Mobile) -->
+            <div>
+                Suggested Videos (Mobile)
+            </div>
+
         </div>
 
         <!-- Content Right Side -->
-        <div>
+        <div class="hidden md:block md:w-[300px] lg:w-[400px] xl:w-[450px] 2xl:w-[500px] h-full overflow-y-auto" id="video-content-right">
 
             <!-- Tags Bar -->
-            <div class="w-full flex flex-row items-center justify-left bg-black text-white fixed top-5">
+            <div class="w-full flex flex-row items-center justify-left text-white rounded-lg sticky top-0" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
 
                 <!-- Arrows Overlay -->
                 <div class="absolute inset-0 flex items-center justify-between -mx-1 pb-4 pointer-events-none">
@@ -150,7 +154,162 @@
             <div>
                 Suggested Videos
             </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
+            <div>
+                Suggested Videos
+            </div>
         </div>
-
     </div>
 </div>
