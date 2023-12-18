@@ -40,7 +40,7 @@
     <script src="../js/video-menu.js" defer></script>
     <script src="../js/image-overlay.js" defer></script>
     <script src="../js/video-player.js" defer></script>
-    <script src="../js/width-pixels.js"></script>
+    <script src="../js/tag-scroll.js" defer></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -79,7 +79,7 @@
 
                 <!-- Top Nav Logo -->
                 <div class="mr-4">
-                    <a href="index.php">
+                    <a href="../index.php">
                         <img src="../img/atp-logo-2.png" class="w-50 ml-7" alt="ALLthePREACHING">
                     </a>
                 </div>
@@ -194,7 +194,7 @@
 
             <!-- Side Nav Logo -->
             <div class="ml-4">
-                <a href="index.php">
+                <a href="../index.php">
                     <img src="../img/atp-logo-2.png" class="border-2 border-red-700 w-60" alt="ALLthePREACHING">
                 </a>
             </div>

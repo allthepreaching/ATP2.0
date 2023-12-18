@@ -33,13 +33,12 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/output.css">
     <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/video-player.css">
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="js/video-menu.js" defer></script>
     <script src="js/image-overlay.js" defer></script>
-    <script src="js/video-player.js" defer></script>
+    <script src="js/tag-scroll.js" defer></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
