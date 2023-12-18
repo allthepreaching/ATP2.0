@@ -68,7 +68,7 @@
         <nav class="w-full flex flex-row items-center justify-between px-4 pt-2">
 
             <!-- Top Nav Toggle Logo Container -->
-            <div class="flex flex-row items-center justify-between w-60 h-auto">
+            <div class="flex flex-row items-center justify-between flex-shrink lg:w-60 h-auto cursor-pointer">
 
                 <!-- Top Nav Toggle -->
                 <div class="flex items-center justify-center w-12 h-12 ml-3" @click="open = !open">
@@ -78,7 +78,7 @@
                 </div>
 
                 <!-- Top Nav Logo -->
-                <div class="mr-4">
+                <div class="hidden lg:block lg:mr-4">
                     <a href="../index.php">
                         <img src="../img/atp-logo-2.png" class="w-50 ml-7" alt="ALLthePREACHING">
                     </a>
@@ -90,8 +90,12 @@
 
                 <!-- Top Nav Search Bar -->
                 <div class="flex justify-between items-center w-full h-12 bg-[#990000] border border-[#990000] rounded-full">
+
+                    <!-- Search Input -->
                     <input type="text" class="flex-grow bg-black text-white rounded-full h-full text-lg px-4" placeholder="Search...">
-                    <div class="flex items-center justify-center text-white px-4 h-full border-l border-l-[#990000]">
+
+                    <!-- Search Button -->
+                    <div class="flex items-center justify-center text-white px-4 h-full border-l border-l-[#990000] cursor-pointer">
                         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -100,7 +104,7 @@
                 </div>
 
                 <!-- Top Nav Search Mic -->
-                <div class="flex justify-center items-center w-12 h-12 bg-[#990000] border border-[#990000] rounded-full p-1 ml-2">
+                <div class="flex justify-center items-center w-12 h-12 bg-[#990000] border border-[#990000] rounded-full p-1 ml-2 cursor-pointer">
                     <a href="#">
                         <svg fill="#ffffff" class="w-10 h-6" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
                             <g>
@@ -113,7 +117,7 @@
             </div>
 
             <!-- Top Nav Login Notifications Upload & Profile Container -->
-            <div class="flex flex-row items-center justify-between">
+            <div class="flex flex-row items-center justify-between cursor-pointer">
 
                 <!-- Top Nav Upload -->
                 <div class="flex justify-center items-center w-12 h-12 border border-[#990000] rounded-full p-1 ml-2">
@@ -180,7 +184,7 @@
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
 
     <!-- Side Nav Container -->
-    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 flex-shrink-0 transition-all duration-500" :class="{ 'w-0 invisible': !open, 'w-72 visible': open }">
+    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 flex-shrink-0 transition-all duration-500 cursor-pointer" :class="{ 'w-0 invisible': !open, 'w-72 visible': open }">
 
         <!-- Side Nav Header -->
         <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-4 sticky top-0">
@@ -1415,12 +1419,3 @@
             <?php include_once 'inc/inc.footer.php'; ?>
         </div>
     </div>
-
-
-    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
-    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
-
-    <!-- Side Nav Overlay -->
-
-    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
-    <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
