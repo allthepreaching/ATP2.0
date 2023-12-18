@@ -180,7 +180,7 @@
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
 
     <!-- Side Nav Container -->
-    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 flex-shrink-0 transition-all duration-500 md:block hidden" :class="{ 'w-0 invisible': !open, 'w-72 visible': open }">
+    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 flex-shrink-0 transition-all duration-500" :class="{ 'w-0 invisible': !open, 'w-72 visible': open }">
 
         <!-- Side Nav Header -->
         <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-4 sticky top-0">

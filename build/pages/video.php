@@ -7,7 +7,7 @@
     <div class="max-w-[1440px] h-full flex flex-row items-center justify-center gap-2 bg-black text-white">
 
         <!-- Content Left Side -->
-        <div class="w-full md:w-[450px] lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] h-full overflow-y-scroll" id="video-content-left">
+        <div id="video-content-left" class="h-full overflow-y-scroll transition-all duration-500" :class="{ 'w-full md:w-[450px] lg:w-[600px] xl:w-[800px] 2xl:w-[1000px]': !open, 'w-full md:w-[450px] lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] translate-x-1': open }">
 
             <!-- Video Player Container -->
             <div class="video-container paused" data-volume-level="high">
@@ -358,7 +358,7 @@
         </div>
 
         <!-- Content Right Side -->
-        <div class="hidden md:block md:w-[300px] lg:w-[400px] xl:w-[450px] 2xl:w-[500px] h-full overflow-y-auto" id="video-content-right">
+        <div class="h-full overflow-y-auto transition-all duration-500" :class="{'hidden md:block md:w-[300px] lg:w-[400px] xl:w-[450px] 2xl:w-[500px]': !open, 'w-0': open}" id="video-content-right">
 
             <!-- Tags Bar -->
             <div class="w-full flex flex-row items-center justify-left text-white rounded-lg sticky top-0" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
