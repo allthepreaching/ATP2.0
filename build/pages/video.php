@@ -392,16 +392,16 @@
 
                     <?php
 
-                    // Run a query to fetch the unique main_category values
-                    $sql = "SELECT DISTINCT main_category FROM videos WHERE main_category != '' ORDER BY main_category ASC";
+                    // Run a query to fetch the unique search_category values
+                    $sql = "SELECT DISTINCT search_category FROM videos WHERE search_category != '' AND search_category NOT LIKe 'pro%' ORDER BY search_category ASC";
                     $result = $conn->query($sql);
 
                     // Fetch the results and store them in an array
                     $categories = $result->fetch_all(MYSQLI_ASSOC);
 
-                    // Loop through the array and create a tag for each main_category
+                    // Loop through the array and create a tag for each search_category
                     foreach ($categories as $category) {
-                        echo "<div class='tag whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm'>" . $category['main_category'] . "</div>";
+                        echo "<div class='tag whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm'>" . $category['search_category'] . "</div>";
                     }
 
                     // Close the database connection
