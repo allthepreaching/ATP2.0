@@ -66,7 +66,7 @@
         <nav class="w-full flex flex-row items-center justify-between px-4 pt-2">
 
             <!-- Top Nav Toggle Logo Container -->
-            <div class="flex flex-row items-center justify-between w-60 h-auto cursor-pointer">
+            <div class="flex flex-row items-center justify-between flex-shrink lg:w-60 h-auto cursor-pointer">
 
                 <!-- Top Nav Toggle -->
                 <div class="flex items-center justify-center w-12 h-12 ml-3" @click="open = !open">
@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Top Nav Logo -->
-                <div class="mr-4">
+                <div class="hidden lg:block lg:mr-4">
                     <a href="index.php">
                         <img src="img/atp-logo-2.png" class="w-50 ml-7" alt="ALLthePREACHING">
                     </a>

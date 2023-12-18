@@ -86,7 +86,7 @@
             </div>
 
             <!-- Top Nav Search Bar & Mic -->
-            <div class="flex flex-row items-center justify-between h-full w-96 lg:w-2/5">
+            <div class="flex flex-row items-center justify-between h-full w-96 lg:w-2/5 cursor-pointer">
 
                 <!-- Top Nav Search Bar -->
                 <div class="flex justify-between items-center w-full h-12 bg-[#990000] border border-[#990000] rounded-full">
