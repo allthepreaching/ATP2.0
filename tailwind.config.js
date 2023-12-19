@@ -4,6 +4,9 @@ module.exports = {
   content: ["./build/*.{html,js,php}", "./build/**/*.{html,js,php}"],
   theme: {
     extend: {
+      width: {
+        "95vw": "95vw",
+      },
       boxShadow: {
         upward:
           "0em -0.25em 0.375em -0.0625em rgba(0, 0, 0, 0.1), 0em -0.125em 0.25em -0.0625em rgba(0, 0, 0, 0.06)",
