@@ -27,11 +27,8 @@
         <!-- Tags -->
         <div id="tags" class="tags flex flex-row overflow-x-auto pb-4 px-3">
 
-            <!-- Start Tag -->
-            <div class='tag-start'></div>
-
             <!-- All Tag -->
-            <div class='tag whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-white text-black rounded-lg text-sm'>All Videos</div>
+            <div class='tag selected cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm'>All Videos</div>
 
             <?php
 
@@ -44,15 +41,12 @@
 
             // Loop through the array and create a tag for each search_category
             foreach ($categories as $category) {
-                echo "<div class='tag whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm'>" . $category['search_category'] . "</div>";
+                echo "<div class='tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm'>" . $category['search_category'] . "</div>";
             }
 
             // Close the database connection
             $conn->close();
             ?>
-
-            <!-- End Tag -->
-            <div class='tag-end'></div>
         </div>
     </div>
 

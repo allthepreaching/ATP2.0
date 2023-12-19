@@ -384,11 +384,8 @@
                 <!-- Tags -->
                 <div id="tags" class="tags flex flex-row overflow-x-auto pb-4 px-3">
 
-                    <!-- Start Tag -->
-                    <div class='tag-start'></div>
-
                     <!-- All Tag -->
-                    <div class='tag whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-white text-black rounded-lg text-sm'>All Videos</div>
+                    <div data-tag='all-videos' class='tag whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm'>All Videos</div>
 
                     <?php
 
@@ -407,9 +404,6 @@
                     // Close the database connection
                     $conn->close();
                     ?>
-
-                    <!-- End Tag -->
-                    <div class='tag-end'></div>
                 </div>
             </div>
 
