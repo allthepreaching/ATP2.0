@@ -28,7 +28,7 @@
         <div id="tags" class="tags flex flex-row overflow-x-auto pb-4 px-3">
 
             <!-- All Tag -->
-            <div class='tag selected cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm'>All Videos</div>
+            <div data-tag='all-videos' class='tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm'>All Videos</div>
 
             <?php
 
