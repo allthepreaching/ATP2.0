@@ -1,20 +1,50 @@
 document.addEventListener("DOMContentLoaded", function () {
   const arrowLeft = document.getElementById("arrow-left");
   const arrowRight = document.getElementById("arrow-right");
-  const tags = document.getElementById("tags");
+  const tagsContainer = document.getElementById("tags");
+  const tagLinks = document.querySelectorAll(".tag");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  if (arrowLeft && arrowRight && tags) {
+  // Scroll tags container left or right on mouse drag
+  tagsContainer.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - tagsContainer.offsetLeft;
+    scrollLeft = tagsContainer.scrollLeft;
+    tagsContainer.style.userSelect = "none"; // Disable text selection
+  });
+
+  tagsContainer.addEventListener("mouseleave", () => {
+    isDown = false;
+    tagsContainer.style.userSelect = ""; // Re-enable text selection
+  });
+
+  tagsContainer.addEventListener("mouseup", () => {
+    isDown = false;
+    tagsContainer.style.userSelect = ""; // Re-enable text selection
+  });
+
+  tagsContainer.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - tagsContainer.offsetLeft;
+    const walk = (x - startX) * 3; //scroll-fast
+    tagsContainer.scrollLeft = scrollLeft - walk;
+  });
+
+  // Scroll tags container left or right on arrow click
+  if (arrowLeft && arrowRight && tagsContainer) {
     arrowLeft.addEventListener("click", function () {
-      tags.scrollBy({ left: -200, behavior: "smooth" });
+      tagsContainer.scrollBy({ left: -200, behavior: "smooth" });
     });
 
     arrowRight.addEventListener("click", function () {
-      tags.scrollBy({ left: 200, behavior: "smooth" });
+      tagsContainer.scrollBy({ left: 200, behavior: "smooth" });
     });
   }
-  // Select all tag links
-  const tagLinks = document.querySelectorAll(".tag");
 
+  // Snap tag to left of tags container and invert colors on click
   // Add a click event listener to each tag link
   tagLinks.forEach((tagLink) => {
     tagLink.addEventListener("click", function (e) {

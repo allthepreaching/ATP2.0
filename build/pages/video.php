@@ -361,10 +361,10 @@
         <div class="h-full overflow-y-auto transition-all duration-500" :class="{'hidden md:block md:w-[300px] lg:w-[400px] xl:w-[450px] 2xl:w-[500px]': !open, 'w-0': open}" id="video-content-right">
 
             <!-- Tags Bar -->
-            <div class="w-full flex flex-row items-center justify-left text-white rounded-lg sticky top-0" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+            <div class="w-full flex flex-row items-center justify-left text-white rounded-lg sticky top-0" >
 
                 <!-- Arrows Overlay -->
-                <div class="absolute inset-0 flex items-center justify-between -mx-1 pb-4 pointer-events-none">
+                <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none">
 
                     <!-- Left Arrow -->
                     <div id="arrow-left" class="arrow-left flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
@@ -382,7 +382,7 @@
                 </div>
 
                 <!-- Tags -->
-                <div id="tags" class="tags flex flex-row overflow-x-auto pb-4 px-3">
+                <div id="tags" class="tags flex flex-row overflow-x-auto">
 
                     <!-- All Tag -->
                     <div data-tag='all-videos' class='tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm'>All Videos</div>

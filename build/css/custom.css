@@ -15,6 +15,15 @@
   -webkit-box-orient: vertical;
 }
 
+#tags {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+#tags::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari and Opera */
+}
+
 /* Side Nav Toggle Spin */
 .spin {
   animation: spin 1s linear infinite;

@@ -7,7 +7,7 @@
     <div class="w-full flex flex-row items-center justify-left bg-black text-white fixed top-5">
 
         <!-- Arrows Overlay -->
-        <div class="absolute inset-0 flex items-center justify-between -mx-1 pb-4 pointer-events-none">
+        <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none">
 
             <!-- Left Arrow -->
             <div id="arrow-left" class="arrow-left flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
@@ -25,7 +25,7 @@
         </div>
 
         <!-- Tags -->
-        <div id="tags" class="tags flex flex-row overflow-x-auto pb-4 px-3">
+        <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
 
             <!-- All Tag -->
             <div data-tag='all-videos' class='tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm'>All Videos</div>
