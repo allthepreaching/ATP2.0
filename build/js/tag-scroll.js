@@ -68,9 +68,16 @@ document.addEventListener("DOMContentLoaded", function () {
       // Get the left position of the clicked tag relative to the tags container
       const tagLeft = this.offsetLeft;
 
-      // Scroll the tags container to the left position of the clicked tag
+      // Get the width of the tags container and the clicked tag
+      const tagsContainerWidth = tagsContainer.offsetWidth;
+      const tagWidth = this.offsetWidth;
+
+      // Calculate the center position of the clicked tag
+      const tagCenter = tagLeft - tagsContainerWidth / 2 + tagWidth / 2;
+
+      // Scroll the tags container to the center position of the clicked tag
       tagsContainer.scrollTo({
-        left: tagLeft,
+        left: tagCenter,
         behavior: "smooth",
       });
     });
