@@ -390,7 +390,7 @@
                     <?php
 
                     // Run a query to fetch the unique search_category values
-                    $sql = "SELECT DISTINCT search_category FROM videos WHERE search_category != '' AND search_category NOT LIKe 'pro%' ORDER BY search_category ASC";
+                    $sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
                     $result = $conn->query($sql);
 
                     // Fetch the results and store them in an array
