@@ -904,6 +904,10 @@ video {
   max-width: 1440px;
 }
 
+.max-w-\[\] {
+  max-width: ;
+}
+
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -1325,6 +1329,10 @@ video {
 
   .sm\:w-full {
     width: 100%;
+  }
+
+  .sm\:w-\[450px\] {
+    width: 450px;
   }
 }
 

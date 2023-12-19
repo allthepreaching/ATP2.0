@@ -4,7 +4,7 @@
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
 
     <!-- Tags Bar -->
-    <div class="w-full flex flex-row items-center justify-left bg-black text-white fixed top-5">
+    <div class="max-w-[1440px] flex flex-row items-center justify-left bg-black text-white fixed top-5">
 
         <!-- Arrows Overlay -->
         <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none">
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Content -->
-    <div class="w-full h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-auto pt-4 pb-10">
+    <div class="max-w-[1440px] h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-auto pt-4 pb-10">
 
         <!-- Newest Weekly Videos -->
         <div class="w-full flex flex-row items-center justify-start bg-black font-bold text-white text-2xl pl-4 mb-2">
