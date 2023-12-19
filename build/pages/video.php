@@ -361,7 +361,7 @@
         <div class="h-full overflow-y-auto transition-all duration-500" :class="{'hidden md:block md:w-[300px] lg:w-[400px] xl:w-[450px] 2xl:w-[500px]': !open, 'w-0': open}" id="video-content-right">
 
             <!-- Tags Bar -->
-            <div class="w-full flex flex-row items-center justify-left text-white rounded-lg sticky top-0" >
+            <div class="w-full flex flex-row items-center justify-left text-white rounded-lg sticky top-0">
 
                 <!-- Arrows Overlay -->
                 <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none">
@@ -400,9 +400,6 @@
                     foreach ($categories as $category) {
                         echo "<div class='tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm'>" . $category['search_category'] . "</div>";
                     }
-
-                    // Close the database connection
-                    $conn->close();
                     ?>
                 </div>
             </div>
