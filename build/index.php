@@ -62,7 +62,7 @@
             <div class="w-95vw flex flex-col items-start justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards -->
-                <div class="w-full flex flex-row">
+                <div class="w-full flex flex-row items-center justify-center">
 
                     <!-- Video Card -->
                     <?php
