@@ -41,7 +41,8 @@
 
             // Loop through the array and create a tag for each search_category
             foreach ($categories as $category) {
-                echo '<div class="tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm">' . $category["search_category"] . '</div>';
+                $class = $category["search_category"] == 'Newest' ? 'newest-tag' : '';
+                echo '<div class="' . $class . ' tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm">' . $category["search_category"] . '</div>';
             }
             ?>
         </div>
@@ -67,7 +68,7 @@
                     <!-- Video Cards -->
                     <?php
                     // Select all from videos where the created_at date is within 8 days of the current date/time
-                    $sql = "SELECT * FROM videos WHERE created_at >= DATE_SUB(NOW(), INTERVAL 8 DAY) LIMIT 5";
+                    $sql = "SELECT * FROM videos WHERE vid_category = 'salvation' LIMIT 6";
 
                     // Execute the query
                     $result = $conn->query($sql);
