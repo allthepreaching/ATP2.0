@@ -83,9 +83,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Select the "All Videos" tag and trigger a click event
-  const allVideosTag = document.querySelector(".tag[data-tag='all-videos']");
-  if (allVideosTag) {
-    allVideosTag.click();
+  // Add a click event listener to each tag
+  for (let tag of tagLinks) {
+    tag.addEventListener("click", function () {
+      // Remove the 'selected' class from all tagLinks
+      for (let otherTag of tagLinks) {
+        otherTag.classList.remove("selected");
+      }
+
+      // Add the 'selected' class to the clicked tag
+      this.classList.add("selected");
+    });
   }
+
+  // Get the 'Newest' tag
+  let newestTag = document.getElementsByClassName("newest-tag")[0];
+
+  // Simulate a click on the 'Newest' tag
+  newestTag.click();
 });
