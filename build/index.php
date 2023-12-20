@@ -61,24 +61,6 @@
             <!-- Newest Weekly Content Container -->
             <div class="w-95vw flex flex-row items-center justify-start bg-black text-white px-2 relative">
 
-                <!-- Arrows Overlay -->
-                <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none z-50">
-
-                    <!-- Left Arrow -->
-                    <div id="arrow-left" class="arrow-left flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
-                        <svg class="w-12 h-12 hover:text-[#990000]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 6L9 12L15 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
-
-                    <!-- Right Arrow -->
-                    <div id="arrow-right" class="arrow-right flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
-                        <svg class="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                </div>
-
                 <!-- Video Cards -->
                 <div class="w-full flex flex-row overflow-x-auto mb-4 px-3">
 
