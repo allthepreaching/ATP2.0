@@ -97,18 +97,22 @@
                         // Loop through the results and create a video card for each video
                         while ($row = $result->fetch_assoc()) {
                             echo '
-                            <!-- Video Card -->
-                            <a href="pages/video.php">
-                                <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0">
-                        
-                                    <!-- Video -->
-                                    <div class="xs:h-[310px] xs:w-full sm:h-[270px] sm:w-full md:h-[170px] md:w-full flex items-center justify-center rounded-full relative" x-data=\'{ playing: false, videoUrl: "https://www.kjv1611only.com/video/01salvation/360_Video.mp4" }\' @mouseover="playing = true; $refs.video.src = videoUrl; $refs.video.preload = \'auto\'; $refs.video.load()" @mouseout="playing = false; $refs.video.pause()">
+                        <!-- Video Card -->
+                        <a href="pages/video.php">
 
-                                        <video x-ref="video" preload="none" class="transition-opacity duration-500 w-full h-full object-cover" :class=\'{ "opacity-100": playing }\' @canplaythrough="$refs.video.play()" muted>
-                                        </video>
+                            <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0"
+                            x-data=\'{ playing: false, videoUrl: "https://www.kjv1611only.com/video/01salvation/360_Video.mp4" }\'
+                            @mouseover="playing = true; $refs.video.src = videoUrl; $refs.video.preload = \'auto\'; $refs.video.load()"
+                            @mouseout="playing = false; $refs.video.pause()">
 
-                                        <img src="img/Revelation_Chart.jpeg" alt="Video thumbnail" class="w-full h-full absolute top-0 left-0 object-cover cursor-pointer transition-opacity duration-500" :class=\'{ "opacity-0": playing }\'>
-                                    </div>
+                                <!-- Video -->
+                                <div class="xs:h-[310px] xs:w-full sm:h-[270px] sm:w-full md:h-[170px] md:w-full flex items-center justify-center rounded-full relative">
+
+                                    <video x-ref="video" preload="none" class="w-full h-full transition-opacity duration-500 object-cover" :class=\'{ "opacity-100": playing }\' @canplaythrough="$refs.video.play()" muted>
+                                    </video>
+
+                                    <img src="img/Revelation_Chart.jpeg" alt="Video thumbnail" class="w-full h-full absolute top-0 left-0 object-cover cursor-pointer transition-opacity duration-500" :class=\'{ "opacity-0": playing }\'>
+                                </div>
                                 
                                 <!-- Video Data -->
                                 <div class="w-full h-2/3 flex flex-row items-center justify-start mt-6">
