@@ -74,22 +74,33 @@
 
                     // Check if there are any results
                     if ($result->num_rows > 0) {
+
                         // Loop through the results and create a video card for each video
                         while ($row = $result->fetch_assoc()) {
+
+                            // Set video variables
+                            $videoId = $row['id']; // Video ID
+                            $videoCategory = $row['search_category']; // Video Category
+                            $videoPreacher = $row['vid_preacher']; // Video Preacher
+                            $videoTitle = $row['vid_title']; // Video Title
+                            $dateLive = $row['date']; // Video Live Date
+                            $videoUrl = $row['vid_url']; // Video URL
+                            $videoThumb = $row['thumb_url']; // Video Thumbnail
+                            $videoAvatar = $row['pic_url']; // Video Avatar
+                            $videoMainCategory = $row['main_category']; // Video Main Category
+                            $dateCreated = $row['created_at']; // Video Created At Date
+
+                            // Output a video card for each video
                             echo '
-                        <!-- Video Card -->
+                            <!-- Video Card -->
                             <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0"
-                            x-data=\'{ playing: false, videoUrl: "https://www.kjv1611only.com/video/01salvation/360_Video.mp4" }\'
-                            @mouseover="playing = true; $refs.video.src = videoUrl; $refs.video.preload = \'auto\'; $refs.video.load()"
-                            @mouseout="playing = false; $refs.video.pause()">
+                            x-data=\'{ videoUrl: "' . $videoUrl . '", videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video -->
                                     <div class="xs:h-[310px] xs:w-full sm:h-[270px] sm:w-full md:h-[170px] md:w-full flex items-center justify-center rounded-full relative">
 
-                                        <video x-ref="video" preload="none" class="w-full h-full transition-opacity duration-500 object-cover" :class=\'{ "opacity-100": playing }\' @canplaythrough="$refs.video.play()" muted>
-                                        </video>
-
-                                        <img src="img/Revelation_Chart.jpeg" alt="Video thumbnail" class="w-full h-full absolute top-0 left-0 object-cover cursor-pointer transition-opacity duration-500" :class=\'{ "opacity-0": playing }\'>
+                                        <!-- Video Thumbnail -->
+                                        <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full absolute top-0 left-0 cursor-pointer">
                                     </div>
                                 
                                 <!-- Video Data -->
@@ -98,29 +109,28 @@
                                     <!-- Avatar -->
                                     <div class="w-auto h-full flex items-start justify-center pt-2 mr-1">
                                         <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
-                                            <img src="img/atp-logo.png" alt="Avatar" class="w-full h-full object-cover">
+                                            <img src="' . $videoAvatar . '" alt="Avatar" class="w-full h-full object-cover">
                                         </div>
                                     </div>
 
                                     <!-- Information -->
                                     <div class="w-full h-full flex flex-row items-start justify-start pt-2">
                                     
-                                    <div class="w-full h-10 mb-1 mr-10" title="The Bible Way to Heaven 360 Video">
+                                    <div class="w-full h-10 mb-1 mr-10" title="' . $videoTitle . '">
                                     
                                             <!-- Video Title -->
-                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical">The Bible Way to Heaven 360 Video By Pastor Steven Anderson of Faithful Word Baptist Church in Tempe, AZ</span>
+                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical">' . $videoTitle . '</span>
 
                                             <!-- Channel Name -->
                                             <span class="text-small font-bold text-gray-400">
-                                                Salvation
+                                                ' . $videoPreacher . '
                                             </span>
                                             <br>
 
-                                            <!-- Video Views & Date -->
-                                            <span class="text-xs font-bold text-gray-400">
-                                                21.6k Views | 2 Days Ago
-                                            </span>
-                                        </div>
+                                            <!-- Video Views & Time since posted -->
+                                            ';
+                            include "inc/inc.random-views-dates.php";
+                            echo '</div>
 
                                         <!-- Video Menu Wrapper -->
                                         <div class="w-1/12 h-full flex flex-col items-end justify-start pt-2 relative">
@@ -148,7 +158,7 @@
                                             </div>
 
                                             <!-- Video Menu Container -->
-                                            <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-auto px-2 py-1 bg-gray-600 rounded-lg hidden z-50" id="popup-menu" onmouseover="event.stopPropagation();" onmouseout="event.stopPropagation();">>
+                                            <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-auto px-2 py-1 bg-gray-600 rounded-lg hidden z-50" id="popup-menu" onmouseover="event.stopPropagation();" onmouseout="event.stopPropagation();">
 
                                                 <!-- Video Menu -->
                                                 <div class="w-full flex flex-col items-start justify-start">
