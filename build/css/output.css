@@ -640,10 +640,6 @@ video {
   z-index: 50;
 }
 
-.z-20 {
-  z-index: 20;
-}
-
 .m-0 {
   margin: 0px;
 }
@@ -802,6 +798,10 @@ video {
   height: 2rem;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .h-auto {
   height: auto;
 }
@@ -812,10 +812,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[200px\] {
-  height: 200px;
 }
 
 .w-0 {
@@ -874,6 +870,10 @@ video {
   width: 24rem;
 }
 
+.w-\[200px\] {
+  width: 200px;
+}
+
 .w-\[250px\] {
   width: 250px;
 }
@@ -892,10 +892,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[200px\] {
-  width: 200px;
 }
 
 .max-w-\[1440px\] {
@@ -961,10 +957,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
 }
 
 .place-items-center {
@@ -1220,6 +1212,11 @@ video {
   font-weight: 500;
 }
 
+.text-\[\#00ff41\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 255 65 / var(--tw-text-opacity));
+}
+
 .text-\[\#990000\] {
   --tw-text-opacity: 1;
   color: rgb(153 0 0 / var(--tw-text-opacity));
@@ -1233,11 +1230,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-\[\#00ff41\] {
-  --tw-text-opacity: 1;
-  color: rgb(0 255 65 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
@@ -1362,10 +1354,6 @@ video {
     width: 100%;
   }
 
-  .md\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1396,10 +1384,6 @@ video {
     width: 600px;
   }
 
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1414,10 +1398,6 @@ video {
     width: 800px;
   }
 
-  .xl\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
   .xl\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -1430,10 +1410,6 @@ video {
 
   .\32xl\:w-\[500px\] {
     width: 500px;
-  }
-
-  .\32xl\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .\32xl\:grid-cols-4 {

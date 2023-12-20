@@ -33,9 +33,9 @@ node_modules
 *.zip
 *.rar
 *.iso
-*.jpg
-*.bmp
-*.png
+#*.jpg
+#*.bmp
+#*.png
 *.psd
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
