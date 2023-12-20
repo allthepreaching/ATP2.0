@@ -48,7 +48,7 @@
     </div>
 
     <!-- Content -->
-    <div class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pt-4 pb-10">
+    <div class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
 
         <!-- Newest Weekly Content Section -->
         <section>
