@@ -63,12 +63,12 @@
             <div class="w-95vw flex flex-col items-start justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
-                <div id="video-cards" class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-1">
+                <div id="video-cards" class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-1">
 
                     <!-- Video Cards -->
                     <?php
                     // Select all from videos where the created_at date is within 8 days of the current date/time
-                    $sql = "SELECT * FROM videos WHERE vid_category = 'salvation' LIMIT 6";
+                    $sql = "SELECT * FROM videos WHERE vid_category = 'salvation' LIMIT 10";
 
                     // Execute the query
                     $result = $conn->query($sql);
@@ -94,11 +94,11 @@
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-<div class="video-card aspect-w-16 aspect-h-9 flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg"
-x-data=\'{ videoUrl: "' . $videoUrl . '", videoId: "' . $videoId . '" }\'>
+                                <div class="video-card aspect-w-16 h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg"
+                                x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->
-                                <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full">
+                                <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="aspect-w-16 aspect-h-9 cursor-pointer">
                                 
                                 <!-- Video Data -->
                                 <div class="w-full h-2/3 flex flex-row items-center justify-start mt-6">
@@ -365,7 +365,7 @@ x-data=\'{ videoUrl: "' . $videoUrl . '", videoId: "' . $videoId . '" }\'>
                 </div>
 
                 <!-- Load More Button -->
-                <button id="load-more" class="w-full py-2 mt-4 bg-blue-500 text-white text-center">Load More</button>
+                <button id="load-more" class="w-full py-2 mt-4 mb-8 bg-blue-500 text-white text-center">Load More</button>
 
             </div>
         </section>

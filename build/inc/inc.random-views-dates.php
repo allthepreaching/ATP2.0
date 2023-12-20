@@ -18,11 +18,11 @@ $timeSincePosted = '';
 if ($diff->y > 0) {
     $timeSincePosted = $diff->y . ' Years Ago';
 } elseif ($diff->m > 0) {
-    $timeSincePosted = $diff->m . ' Months ' . $diff->d . ' Weeks Ago';
+    $timeSincePosted = $diff->m . ' Months Ago';
 } elseif ($diff->d > 6) {
     $weeks = floor($diff->d / 7);
     $days = $diff->d % 7;
-    $timeSincePosted = $weeks . ' Weeks ' . $days . ' Days Ago';
+    $timeSincePosted = $weeks . ' Weeks Ago';
 } else {
     $timeSincePosted = $diff->d . ' Days Ago';
 }
