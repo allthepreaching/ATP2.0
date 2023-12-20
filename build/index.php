@@ -63,7 +63,7 @@
             <div class="w-95vw flex flex-col items-start justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
-                <div id="video-cards" class="w-full grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1">
+                <div id="video-cards" class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-1">
 
                     <!-- Video Cards -->
                     <?php
@@ -94,23 +94,19 @@
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                            <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0 cursor-pointer"
-                            x-data=\'{ videoUrl: "' . $videoUrl . '", videoId: "' . $videoId . '" }\'>
+<div class="video-card aspect-w-16 aspect-h-9 flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg"
+x-data=\'{ videoUrl: "' . $videoUrl . '", videoId: "' . $videoId . '" }\'>
 
-                                <!-- Video -->
-                                    <div class="xs:h-[310px] xs:w-full sm:h-[270px] sm:w-full md:h-[170px] md:w-full flex items-center justify-center rounded-full relative">
-
-                                        <!-- Video Thumbnail -->
-                                        <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full absolute top-0 left-0">
-                                    </div>
+                                <!-- Video Thumbnail -->
+                                <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full">
                                 
                                 <!-- Video Data -->
                                 <div class="w-full h-2/3 flex flex-row items-center justify-start mt-6">
 
                                     <!-- Avatar -->
-                                    <div class="w-auto h-full flex items-start justify-center pt-2 mr-1">
+                                    <div class="w-auto h-full flex items-start justify-center pt-2 mr-1 cursor-pointer">
                                         <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
-                                            <img src="' . $videoAvatar . '" alt="Avatar" class="w-full h-full object-cover">
+                                            <img src="' . $videoAvatar . '" alt="' . $videoPreacher . '" class="w-full h-full object-cover">
                                         </div>
                                     </div>
 
@@ -120,10 +116,10 @@
                                     <div class="w-full h-10 mb-1 mr-10" title="' . $videoTitle . '">
                                     
                                             <!-- Video Title -->
-                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical">' . $videoTitle . '</span>
+                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
 
                                             <!-- Channel Name -->
-                                            <span class="text-small font-bold text-gray-400">
+                                            <span class="text-small font-bold text-gray-400 cursor-pointer">
                                                 ' . $videoPreacher . '
                                             </span>
                                             <br>
