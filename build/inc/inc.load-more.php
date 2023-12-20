@@ -1,96 +1,36 @@
-<?php include_once "inc/inc.header-index.php"; ?>
+<?php
 
-<!-- Home Page -->
-<div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
+include_once 'inc.wamp.php';
 
-    <!-- Tags Bar -->
-    <div class="w-95vw flex flex-row items-center justify-center bg-black text-white rounded-lg fixed top-5">
+// Get the offset and limit from the GET parameters
+$offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 5;
 
-        <!-- Arrows Overlay -->
-        <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none z-50">
+// Select videos from the database
+$sql = "SELECT * FROM videos WHERE created_at >= DATE_SUB(NOW(), INTERVAL 8 DAY) LIMIT $limit OFFSET $offset";
+$result = $conn->query($sql);
 
-            <!-- Left Arrow -->
-            <div id="arrow-left" class="arrow-left flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
-                <svg class="w-8 h-8 hover:text-[#990000]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 6L9 12L15 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-
-            <!-- Right Arrow -->
-            <div id="arrow-right" class="arrow-right flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-        </div>
-
-        <!-- Tags -->
-        <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
-
-            <!-- All Tag -->
-            <div data-tag="all-videos" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</div>
-
-            <?php
-
-            // Run a query to fetch the unique search_category values
-            $sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
-            $result = $conn->query($sql);
-
-            // Fetch the results and store them in an array
-            $categories = $result->fetch_all(MYSQLI_ASSOC);
-
-            // Loop through the array and create a tag for each search_category
-            foreach ($categories as $category) {
-                echo '<div class="tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm">' . $category["search_category"] . '</div>';
-            }
-            ?>
-        </div>
-    </div>
-
-    <!-- Content -->
-    <div class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
-
-        <!-- Newest Weekly Content Section -->
-        <section>
-
-            <!-- Newest Weekly Content Header -->
-            <div class="w-full flex flex-row items-center justify-start bg-black font-bold text-white text-2xl pl-4 mb-2">
-                Newest Weekly Videos
-            </div>
-
-            <!-- Newest Weekly Content Container -->
-            <div class="w-95vw flex flex-col items-start justify-center bg-black text-white px-2 relative">
-
-                <!-- Video Cards Container -->
-                <div id="video-cards" class="w-full grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-1">
-
-                    <!-- Video Cards -->
-                    <?php
-                    // Select all from videos where the created_at date is within 8 days of the current date/time
-                    $sql = "SELECT * FROM videos WHERE created_at >= DATE_SUB(NOW(), INTERVAL 8 DAY) LIMIT 5";
-
-                    // Execute the query
-                    $result = $conn->query($sql);
-
-                    // Check if there are any results
-                    if ($result->num_rows > 0) {
-                        // Loop through the results and create a video card for each video
-                        while ($row = $result->fetch_assoc()) {
-                            echo '
+// Check if there are any results
+if ($result->num_rows > 0) {
+    // Loop through the results and create a video card for each video
+    while ($row = $result->fetch_assoc()) {
+        echo '
                         <!-- Video Card -->
+                        <a href="pages/video.php">
+
                             <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0"
                             x-data=\'{ playing: false, videoUrl: "https://www.kjv1611only.com/video/01salvation/360_Video.mp4" }\'
                             @mouseover="playing = true; $refs.video.src = videoUrl; $refs.video.preload = \'auto\'; $refs.video.load()"
                             @mouseout="playing = false; $refs.video.pause()">
 
                                 <!-- Video -->
-                                    <div class="xs:h-[310px] xs:w-full sm:h-[270px] sm:w-full md:h-[170px] md:w-full flex items-center justify-center rounded-full relative">
+                                <div class="xs:h-[310px] xs:w-full sm:h-[270px] sm:w-full md:h-[170px] md:w-full flex items-center justify-center rounded-full relative">
 
-                                        <video x-ref="video" preload="none" class="w-full h-full transition-opacity duration-500 object-cover" :class=\'{ "opacity-100": playing }\' @canplaythrough="$refs.video.play()" muted>
-                                        </video>
+                                    <video x-ref="video" preload="none" class="w-full h-full transition-opacity duration-500 object-cover" :class=\'{ "opacity-100": playing }\' @canplaythrough="$refs.video.play()" muted>
+                                    </video>
 
-                                        <img src="img/Revelation_Chart.jpeg" alt="Video thumbnail" class="w-full h-full absolute top-0 left-0 object-cover cursor-pointer transition-opacity duration-500" :class=\'{ "opacity-0": playing }\'>
-                                    </div>
+                                    <img src="img/Revelation_Chart.jpeg" alt="Video thumbnail" class="w-full h-full absolute top-0 left-0 object-cover cursor-pointer transition-opacity duration-500" :class=\'{ "opacity-0": playing }\'>
+                                </div>
                                 
                                 <!-- Video Data -->
                                 <div class="w-full h-2/3 flex flex-row items-center justify-start mt-6">
@@ -148,7 +88,7 @@
                                             </div>
 
                                             <!-- Video Menu Container -->
-                                            <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-auto px-2 py-1 bg-gray-600 rounded-lg hidden z-50" id="popup-menu" onmouseover="event.stopPropagation();" onmouseout="event.stopPropagation();">>
+                                            <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-auto px-2 py-1 bg-gray-600 rounded-lg hidden z-50" id="popup-menu">
 
                                                 <!-- Video Menu -->
                                                 <div class="w-full flex flex-col items-start justify-start">
@@ -349,44 +289,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                             ';
-                        }
-                    } else {
-                        echo "No videos found";
-                    }
-                    ?>
-                </div>
-
-                <!-- Load More Button -->
-                <button id="load-more" class="w-full py-2 mt-4 bg-blue-500 text-white text-center">Load More</button>
-
-            </div>
-        </section>
-    </div>
-</div>
-
-<script>
-    // Number of videos to load at a time
-    var limit = 5;
-
-    // Offset to start loading videos from
-    var offset = limit;
-
-    // Load More Button
-    var loadMoreButton = document.getElementById('load-more');
-
-    // Add click event listener to Load More Button
-    loadMoreButton.addEventListener('click', function() {
-        // Fetch more videos
-        fetch('inc/inc.load-more.php?offset=' + offset + '&limit=' + limit)
-            .then(response => response.text())
-            .then(data => {
-                // Append the new videos to the video cards container
-                document.getElementById('video-cards').innerHTML += data;
-
-                // Update the offset
-                offset += limit;
-            })
-            .catch(error => console.error(error));
-    });
-</script>
+    }
+}
