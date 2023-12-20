@@ -59,16 +59,16 @@
             </div>
 
             <!-- Newest Weekly Content Container -->
-            <div class="w-95vw flex flex-row items-center justify-start bg-black text-white px-2 relative">
+            <div class="w-95vw flex flex-col items-start justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards -->
-                <div class="w-full flex flex-row overflow-x-auto mb-4 px-3">
+                <div class="w-full flex flex-row">
 
                     <!-- Video Card -->
                     <?php
 
                     // Select all from videos where the created_at date is within 8 days of the current date/time
-                    $sql = "SELECT * FROM videos WHERE created_at >= DATE_SUB(NOW(), INTERVAL 8 DAY) LIMIT 10";
+                    $sql = "SELECT * FROM videos WHERE created_at >= DATE_SUB(NOW(), INTERVAL 8 DAY)";
 
                     // Execute the query
                     $result = $conn->query($sql);
