@@ -93,14 +93,14 @@
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                            <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0"
+                            <div class="video-card xs:w-[480px] xs:h-[460px] sm:w-[420px] sm:h-[400px] md:w-[320px] md:h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg flex-shrink-0 cursor-pointer"
                             x-data=\'{ videoUrl: "' . $videoUrl . '", videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video -->
                                     <div class="xs:h-[310px] xs:w-full sm:h-[270px] sm:w-full md:h-[170px] md:w-full flex items-center justify-center rounded-full relative">
 
                                         <!-- Video Thumbnail -->
-                                        <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full absolute top-0 left-0 cursor-pointer">
+                                        <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full absolute top-0 left-0">
                                     </div>
                                 
                                 <!-- Video Data -->
