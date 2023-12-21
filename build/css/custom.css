@@ -33,6 +33,16 @@
   display: none; /* For Chrome, Safari and Opera */
 }
 
+/* Remove the scroll bars from the index page content section */
+#content-home {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+#content-home::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari and Opera */
+}
+
 /* Side Nav Toggle Spin */
 .spin {
   animation: spin 1s linear infinite;

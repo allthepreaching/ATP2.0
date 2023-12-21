@@ -4,7 +4,7 @@
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
 
     <!-- Tags Bar -->
-    <div class="w-95vw flex flex-row items-center justify-center bg-black text-white rounded-lg fixed top-5">
+    <div class="w-95vw flex flex-row items-center justify-center bg-black text-white rounded-full fixed top-5">
 
         <!-- Arrows Overlay -->
         <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none z-50">
@@ -49,7 +49,7 @@
     </div>
 
     <!-- Content -->
-    <div class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
+    <div id="content-home" class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
 
         <!-- Newest Weekly Content Section -->
         <section>
@@ -60,7 +60,7 @@
             </div>
 
             <!-- Newest Weekly Content Container -->
-            <div class="w-95vw flex flex-col items-start justify-center bg-black text-white px-2 relative">
+            <div class="w-95vw flex flex-col items-center justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
                 <div id="video-cards" class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-1">
