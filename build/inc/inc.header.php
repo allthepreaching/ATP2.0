@@ -77,7 +77,7 @@ session_start();
             <div class="flex flex-row items-center justify-between flex-shrink lg:w-60 h-auto cursor-pointer">
 
                 <!-- Top Nav Toggle -->
-                <div class="flex items-center justify-center w-12 h-12 ml-3" @click="open = !open">
+                <div class="flex items-center justify-center w-12 h-12 ml-3" @click.stop="open = !open">
                     <svg fill="#ffffff" class="w-6 h-6" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 0h4v4H0V0zm0 6h4v4H0V6zm0 6h4v4H0v-4zM6 0h4v4H6V0zm0 6h4v4H6V6zm0 6h4v4H6v-4zm6-12h4v4h-4V0zm0 6h4v4h-4V6zm0 6h4v4h-4v-4z" fill-rule="evenodd" />
                     </svg>
@@ -190,7 +190,7 @@ session_start();
     <!-- */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
 
     <!-- Side Nav Container -->
-    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 flex-shrink-0 transition-all duration-500 cursor-pointer" :class="{ 'w-0 invisible': !open, 'w-72 visible': open }">
+    <div class="bg-black text-white h-screen w-72 fixed top-0 left-0 overflow-x-hidden overflow-y-auto z-10 flex-shrink-0 transition-all duration-500 cursor-pointer" :class="{ 'w-0 invisible': !open, 'w-72 visible': open }" @click.away="open = false">
 
         <!-- Side Nav Header -->
         <div class="bg-black flex flex-row w-full items-center justify-start px-6 py-2 mb-4 sticky top-0">
