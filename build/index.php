@@ -158,7 +158,7 @@
                                             <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-auto px-2 py-1 bg-gray-600 rounded-lg hidden z-50" id="popup-menu" onmouseover="event.stopPropagation();" onmouseout="event.stopPropagation();">
 
                                                 <!-- Video Menu -->
-                                                <div class="w-full flex flex-col items-start justify-start">
+                                                <div class="w-full flex flex-col items-start justify-start cursor-pointer">
 
                                                     <!-- Add To Queue -->
                                                     <div class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">
