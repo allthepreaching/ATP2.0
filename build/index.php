@@ -368,7 +368,7 @@
                 </div>
 
                 <!-- Load More Button -->
-                <button id="load-more" class="w-full py-2 mt-4 mb-8 bg-blue-500 text-white text-center">Load More</button>
+                <button id="load-more" class="w-3/4 py-2 mt-4 mb-8 border-2 border-white rounded-lg font-bold bg-black text-white text-center hover:bg-white hover:text-black">Load More</button>
 
             </div>
         </section>

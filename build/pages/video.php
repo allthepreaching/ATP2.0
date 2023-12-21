@@ -397,10 +397,10 @@ if (isset($_GET['id'])) {
         </div>
 
         <!-- Content Right Side -->
-        <div class="h-full overflow-y-auto transition-all duration-500" :class="{'hidden md:block md:w-[300px] lg:w-[400px] xl:w-[450px] 2xl:w-[500px]': !open, 'w-0': open}" id="video-content-right">
+        <div id="video-content-right" class="flex flex-col items-center justify-center h-full overflow-y-auto transition-all duration-500" :class="{ 'hidden md:block md:w-[300px] lg:w-[400px] xl:w-[450px] 2xl:w-[500px]': !open, 'w-0': open }">
 
             <!-- Tags Bar -->
-            <div class="w-full flex flex-row items-center justify-left bg-black text-white rounded-lg sticky top-0">
+            <div class="flex flex-row items-center justify-left bg-black text-white rounded-lg sticky top-0">
 
                 <!-- Arrows Overlay -->
                 <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none">
@@ -421,10 +421,10 @@ if (isset($_GET['id'])) {
                 </div>
 
                 <!-- Tags -->
-                <div id="tags" class="tags flex flex-row overflow-x-auto">
+                <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
 
                     <!-- All Tag -->
-                    <div data-tag='all-videos' class='tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm'>All Videos</div>
+                    <div data-tag="all-videos" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</div>
 
                     <?php
 
@@ -437,16 +437,21 @@ if (isset($_GET['id'])) {
 
                     // Loop through the array and create a tag for each search_category
                     foreach ($categories as $category) {
-                        echo "<div class='tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm'>" . $category['search_category'] . "</div>";
+                        $class = $category["search_category"] == 'Newest' ? 'newest-tag' : '';
+                        echo '<div class="' . $class . ' tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm">' . $category["search_category"] . '</div>';
                     }
                     ?>
                 </div>
             </div>
 
             <!-- Suggested Videos -->
-            <div>
+            <div class="flex flex-col items-center justify-center">
                 Suggested Videos
+
+                <!-- Load More Button -->
+                <button id="load-more" class="w-3/4 py-2 mt-4 mb-8 border-2 border-white rounded-lg font-bold bg-black text-white text-center hover:bg-white hover:text-black">Load More</button>
             </div>
+
         </div>
     </div>
 </div>
