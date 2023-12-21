@@ -67,7 +67,8 @@
 
                     <!-- Video Cards -->
                     <?php
-                    // Select all from videos where the created_at date is within 8 days of the current date/time
+
+                    // Select all from videos sort by created_at
                     $sql = "SELECT * FROM videos WHERE vid_category = 'salvation' LIMIT 10";
 
                     // Execute the query
@@ -374,7 +375,7 @@
 
 <script>
     // Number of videos to load at a time
-    var limit = 5;
+    var limit = 10;
 
     // Offset to start loading videos from
     var offset = limit;
