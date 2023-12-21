@@ -1318,6 +1318,11 @@ video {
   opacity: 1;
 }
 
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 @media (min-width: 768px) {
   .md\:block {
     display: block;

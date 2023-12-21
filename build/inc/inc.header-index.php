@@ -96,7 +96,7 @@ session_start();
                 <div class="flex justify-between items-center w-full h-12 bg-[#990000] border border-[#990000] rounded-full">
 
                     <!-- Search Input -->
-                    <input type="text" class="flex-grow bg-black text-white rounded-full h-full text-lg px-4" placeholder="Search...">
+                    <input type="text" class="flex-grow bg-black text-white rounded-full h-full text-lg px-4 focus:outline-none" placeholder="Search...">
 
                     <!-- Search Button -->
                     <div class="flex items-center justify-center text-white px-4 h-full border-l border-l-[#990000] cursor-pointer">
