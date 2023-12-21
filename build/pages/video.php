@@ -1,4 +1,19 @@
-<?php include_once '../inc/inc.header.php'; ?>
+<?php
+
+include_once '../inc/inc.header.php';
+
+// Check if the 'id' parameter is set in the URL
+if (isset($_GET['id'])) {
+
+    // Get the video ID from the URL
+    $videoId = $_GET['id'];
+} else {
+
+    // Redirect to the home page if the video ID is not set
+    header('Location: /');
+    exit();
+}
+?>
 
 <!-- Home Page -->
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
@@ -340,8 +355,32 @@
                     </div>
                 </div>
 
+                <?php
+
+                // SQL query to fetch the video
+                $sql = "SELECT * FROM videos WHERE id = ?";
+
+                // Prepare the SQL statement
+                $stmt = $conn->prepare($sql);
+
+                // Bind the video ID to the SQL statement
+                $stmt->bind_param("i", $videoId);
+
+                // Execute the SQL statement
+                $stmt->execute();
+
+                // Get the result
+                $result = $stmt->get_result();
+
+                // Fetch the video
+                $video = $result->fetch_assoc();
+                $videoUrl = $video['vid_url'];
+
+                echo '
                 <!-- Video Input -->
-                <video src="https://www.kjv1611only.com/video/01salvation/360_Video.mp4">
+                <video src="' . $videoUrl . '">'
+                ?>
+
                 </video>
             </div>
 

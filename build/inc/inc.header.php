@@ -1,4 +1,10 @@
-<?php include_once 'inc.wamp.php'; ?>
+<?php
+
+include_once 'inc.wamp.php';
+
+session_start();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en-US">

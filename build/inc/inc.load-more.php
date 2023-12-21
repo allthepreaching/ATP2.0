@@ -37,7 +37,9 @@ if ($result->num_rows > 0) {
             x-data=\'{ videoId: "' . $videoId . '" }\'>
 
             <!-- Video Thumbnail -->
-            <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="aspect-w-16 aspect-h-9 cursor-pointer">
+            <a href="pages/video.php?id=' . $videoId . '">
+                <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full object-cover">
+            </a>
             
             <!-- Video Data -->
             <div class="w-full h-2/3 flex flex-row items-center justify-start mt-6">
