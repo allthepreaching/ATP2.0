@@ -604,6 +604,11 @@ video {
   inset: 0px;
 }
 
+.inset-y-0 {
+  top: 0px;
+  bottom: 0px;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -630,6 +635,10 @@ video {
 
 .top-5 {
   top: 1.25rem;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .z-10 {
@@ -1117,6 +1126,14 @@ video {
 .bg-orange-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+
+.bg-fade-left {
+  background-image: linear-gradient(to left, #000, transparent);
+}
+
+.bg-fade-right {
+  background-image: linear-gradient(to right, #000, transparent);
 }
 
 .object-cover {

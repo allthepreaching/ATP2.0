@@ -3,8 +3,12 @@
 <!-- Home Page -->
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
 
-    <!-- Tags Bar -->
-    <div class="w-95vw flex flex-row items-center justify-center bg-black text-white rounded-full fixed top-5">
+    <!-- Tags Container -->
+    <div class="tags-container w-95vw flex flex-row items-center justify-center bg-black text-white rounded-full fixed top-5">
+
+        <!-- Fade In -->
+        <div class="absolute inset-y-0 left-0 w-10 bg-fade-right z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-10 bg-fade-left z-10"></div>
 
         <!-- Arrows Overlay -->
         <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none z-50">

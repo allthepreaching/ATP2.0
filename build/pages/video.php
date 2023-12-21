@@ -402,8 +402,12 @@ if (isset($_GET['id'])) {
             <!-- Tags Bar -->
             <div class="flex flex-row items-center justify-left bg-black text-white rounded-lg sticky top-0">
 
+                <!-- Fade In -->
+                <div class="absolute inset-y-0 left-0 w-10 bg-fade-right z-10"></div>
+                <div class="absolute inset-y-0 right-0 w-10 bg-fade-left z-10"></div>
+
                 <!-- Arrows Overlay -->
-                <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none">
+                <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none z-50">
 
                     <!-- Left Arrow -->
                     <div id="arrow-left" class="arrow-left flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
