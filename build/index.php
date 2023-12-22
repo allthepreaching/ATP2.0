@@ -79,12 +79,10 @@
 
                         <!-- Sort Options -->
                         <div id="sortMenu" class="w-48 absolute right-24 h-auto px-2 py-1 bg-gray-600 rounded-lg z-20" x-show="open" @click.away="open = false">
-                            <a href="?sortColumn=title&sortOrder=ASC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Title (A-Z)</a>
-                            <a href="?sortColumn=title&sortOrder=DESC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Title (Z-A)</a>
+                            <a href="?sortColumn=vid_title&sortOrder=ASC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Title (A-Z)</a>
+                            <a href="?sortColumn=vid_title&sortOrder=DESC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Title (Z-A)</a>
                             <a href="?sortColumn=date&sortOrder=ASC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Date (Old-New)</a>
                             <a href="?sortColumn=date&sortOrder=DESC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Date (New-Old)</a>
-                            <a href="?sortColumn=view_count&sortOrder=ASC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">View Count (Low-High)</a>
-                            <a href="?sortColumn=view_count&sortOrder=DESC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">View Count (High-Low)</a>
                         </div>
                     </div>
                 </div>
@@ -98,12 +96,28 @@
 
                     <!-- Video Cards -->
                     <?php
+                    // Get sort column and order from URL parameters
+                    $sortColumn = isset($_GET['sortColumn']) ? $_GET['sortColumn'] : 'date';
+                    $sortOrder = isset($_GET['sortOrder']) ? $_GET['sortOrder'] : 'DESC';
 
-                    // Select all from videos sort by created_at
-                    $sql = "SELECT * FROM videos WHERE vid_category = 'fsanderson' LIMIT 10";
+                    // Validate sort column and order
+                    $allowedColumns = ['vid_title', 'date'];
+                    $allowedOrders = ['ASC', 'DESC'];
+
+                    if (!in_array($sortColumn, $allowedColumns) || !in_array($sortOrder, $allowedOrders)) {
+                        die('Invalid sort column or order');
+                    }
+
+                    // Select all from videos where...
+                    $sql = "SELECT * FROM videos WHERE vid_category = 'fsanderson' ORDER BY $sortColumn $sortOrder LIMIT 10";
 
                     // Execute the query
                     $result = $conn->query($sql);
+
+                    // Check if there are any errors in the SQL query
+                    if ($conn->error) {
+                        die("SQL query failed: " . $conn->error);
+                    }
 
                     // Check if there are any results
                     if ($result->num_rows > 0) {
