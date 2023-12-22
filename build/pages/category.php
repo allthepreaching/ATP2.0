@@ -1,64 +1,15 @@
 <?php include_once "inc/inc.header-index.php"; ?>
 
-<!-- Home Page -->
+<!-- Category Page -->
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
-
-    <!-- Tags Container -->
-    <div class="tags-container w-95vw flex flex-row items-center justify-center bg-black text-white rounded-full fixed top-5">
-
-        <!-- Fade In -->
-        <div class="absolute inset-y-0 left-0 w-10 bg-fade-right z-10"></div>
-        <div class="absolute inset-y-0 right-0 w-10 bg-fade-left z-10"></div>
-
-        <!-- Arrows Overlay -->
-        <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none z-50">
-
-            <!-- Left Arrow -->
-            <div id="arrow-left" class="arrow-left flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
-                <svg class="w-8 h-8 hover:text-[#990000]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 6L9 12L15 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-
-            <!-- Right Arrow -->
-            <div id="arrow-right" class="arrow-right flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-        </div>
-
-        <!-- Tags -->
-        <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
-
-            <!-- All Tag -->
-            <div data-tag="all-videos" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</div>
-
-            <?php
-
-            // Run a query to fetch the unique search_category values
-            $sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
-            $result = $conn->query($sql);
-
-            // Fetch the results and store them in an array
-            $categories = $result->fetch_all(MYSQLI_ASSOC);
-
-            // Loop through the array and create a tag for each search_category
-            foreach ($categories as $category) {
-                $class = $category["search_category"] == 'Newest' ? 'newest-tag' : '';
-                echo '<div class="' . $class . ' tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm">' . $category["search_category"] . '</div>';
-            }
-            ?>
-        </div>
-    </div>
 
     <!-- Content -->
     <div id="content-home" class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
 
-        <!-- Newest Content Section -->
+        <!-- Content Section -->
         <section>
 
-            <!-- Newest Content Header & Filter -->
+            <!-- Content Header & Filter -->
             <div class="flex flex-row items-center justify-between bg-black font-bold text-white text-2xl pl-4 mb-2 relative">
 
                 <!-- Header -->
@@ -88,7 +39,7 @@
                 </div>
             </div>
 
-            <!-- Newest Content Container -->
+            <!-- Content Container -->
             <div class="w-95vw flex flex-col items-center justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
