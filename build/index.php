@@ -55,25 +55,52 @@
     <!-- Content -->
     <div id="content-home" class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
 
-        <!-- Newest Weekly Content Section -->
+        <!-- Newest Content Section -->
         <section>
 
-            <!-- Newest Weekly Content Header -->
-            <div class="w-full flex flex-row items-center justify-start bg-black font-bold text-white text-2xl pl-4 mb-2">
-                Newest Weekly Videos
+            <!-- Newest Content Header & Filter -->
+            <div class="flex flex-row items-center justify-between bg-black font-bold text-white text-2xl pl-4 mb-2 relative">
+
+                <!-- Header -->
+                <div class="flex flex-row items-center justify-start bg-black font-bold text-white text-2xl pl-4 mb-2">
+                    Newest Videos
+                </div>
+
+                <!-- Filter -->
+                <div class="flex flex-row items-center justify-end bg-black font-bold text-white text-xl pr-4 mb-2" x-data="{ open: false }">
+                    <div id="sortDiv" class="cursor-pointer" @click="open = !open">
+                        <!-- Sort Icon and Text -->
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"></path>
+                            </svg>
+                            <span class="ml-2">Sort By...</span>
+                        </div>
+
+                        <!-- Sort Options -->
+                        <div id="sortMenu" class="w-48 absolute right-24 h-auto px-2 py-1 bg-gray-600 rounded-lg z-20" x-show="open" @click.away="open = false">
+                            <a href="?sortColumn=title&sortOrder=ASC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Title (A-Z)</a>
+                            <a href="?sortColumn=title&sortOrder=DESC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Title (Z-A)</a>
+                            <a href="?sortColumn=date&sortOrder=ASC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Date (Old-New)</a>
+                            <a href="?sortColumn=date&sortOrder=DESC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">Date (New-Old)</a>
+                            <a href="?sortColumn=view_count&sortOrder=ASC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">View Count (Low-High)</a>
+                            <a href="?sortColumn=view_count&sortOrder=DESC" class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">View Count (High-Low)</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Newest Weekly Content Container -->
+            <!-- Newest Content Container -->
             <div class="w-95vw flex flex-col items-center justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
-                <div id="video-cards" class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-1">
+                <div id="video-cards" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-1">
 
                     <!-- Video Cards -->
                     <?php
 
                     // Select all from videos sort by created_at
-                    $sql = "SELECT * FROM videos WHERE vid_category = 'salvation' LIMIT 10";
+                    $sql = "SELECT * FROM videos WHERE vid_category = 'fsanderson' LIMIT 10";
 
                     // Execute the query
                     $result = $conn->query($sql);
@@ -104,23 +131,23 @@
 
                                 <!-- Video Thumbnail -->
                                 <a href="pages/video.php?id=' . $videoId . '">
-                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full object-cover">
+                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="h-full object-cover">
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="w-full h-2/3 flex flex-row items-center justify-start mt-6">
+                                <div class="h-2/3 flex flex-row items-center justify-start mt-1">
 
                                     <!-- Avatar -->
-                                    <div class="w-auto h-full flex items-start justify-center pt-2 mr-1 cursor-pointer">
+                                    <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer">
                                         <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
                                             <img src="' . $videoAvatar . '" alt="' . $videoPreacher . '" class="w-full h-full object-cover">
                                         </div>
                                     </div>
 
                                     <!-- Information -->
-                                    <div class="w-full h-full flex flex-row items-start justify-start pt-2">
+                                    <div class="h-full flex flex-row items-start justify-start pt-2">
                                     
-                                    <div class="w-full h-10 mb-1 mr-10" title="' . $videoTitle . '">
+                                    <div class="h-10 mb-1 mr-10" title="' . $videoTitle . '">
                                     
                                             <!-- Video Title -->
                                             <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
@@ -165,7 +192,7 @@
                                             <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-auto px-2 py-1 bg-gray-600 rounded-lg hidden z-50" id="popup-menu" onmouseover="event.stopPropagation();" onmouseout="event.stopPropagation();">
 
                                                 <!-- Video Menu -->
-                                                <div class="w-full flex flex-col items-start justify-start cursor-pointer">
+                                                <div class="flex flex-col items-start justify-start cursor-pointer">
 
                                                     <!-- Add To Queue -->
                                                     <div class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">
@@ -379,6 +406,7 @@
     </div>
 </div>
 
+<!-- Load More Videos -->
 <script>
     // Number of videos to load at a time
     var limit = 10;
