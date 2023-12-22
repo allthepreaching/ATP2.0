@@ -140,7 +140,7 @@
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                                <div class="video-card aspect-w-16 h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg"
+                                <div class="video-card aspect-w-16 h-[300px] xl:h-[405px] flex flex-col items-start justify-start overflow-hidden rounded-lg"
                                 x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->
