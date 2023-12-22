@@ -177,7 +177,7 @@
                                 <div class="w-full h-2/3 flex flex-row items-center justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
-                                    <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer">
+                                    <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer" title="' . $videoPreacher . '">
                                         <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
                                             <img src="' . $videoAvatar . '" alt="' . $videoPreacher . '" class="w-full h-full object-cover">
                                         </div>
@@ -186,19 +186,19 @@
                                     <!-- Information -->
                                     <div class="w-full h-full flex flex-row items-start justify-between pt-2">
                                     
-                                        <div class="h-10 mb-1 mr-10" title="' . $videoTitle . '">
+                                        <div class="h-10 mb-1 mr-10">
                                         
                                             <!-- Video Title -->
-                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
+                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer" title="' . $videoTitle . '">' . $videoTitle . '</span>
 
                                             <!-- Channel Name -->
-                                            <span class="text-small font-bold text-gray-400 cursor-pointer">
+                                            <span class="text-small font-bold text-gray-400 cursor-pointer" title="' . $videoPreacher . '">
                                                 ' . $videoPreacher . '
                                             </span>
                                             <br>
 
                                             <!-- Video Views & Time since posted -->
-                                            <span class="text-xs font-bold text-gray-400">
+                                            <span class="text-xs font-bold text-gray-400" title="' . $views . $clicksText . ' | ' . $timeSincePosted . '">
                                                 ' . $views . $clicksText . ' | ' . $timeSincePosted . '
                                             </span>
                                         </div>
@@ -211,8 +211,7 @@
 
                                                 <svg class="w-6 h-6" viewBox="-6.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
-                                                    <title>menu_option [#1374]</title>
-                                                    <desc>Created with Sketch.</desc>
+                                                    <title>Video Menu</title>
                                                     <defs>
 
                                                     </defs>
