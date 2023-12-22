@@ -32,24 +32,3 @@ function runVideoMenuScript() {
 
 // Run the video-menu script initially
 runVideoMenuScript();
-
-// Load More Button
-loadMoreButton = document.getElementById("load-more");
-
-// Add click event listener to Load More Button
-loadMoreButton.addEventListener("click", function () {
-  // Fetch more videos
-  fetch("inc/inc.load-more.php?offset=" + offset + "&limit=" + limit)
-    .then((response) => response.text())
-    .then((data) => {
-      // Append the new videos to the video cards container
-      document.getElementById("video-cards").innerHTML += data;
-
-      // Update the offset
-      offset += limit;
-
-      // Run the video-menu script again
-      runVideoMenuScript();
-    })
-    .catch((error) => console.error(error));
-});

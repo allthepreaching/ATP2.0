@@ -1,11 +1,11 @@
 // Number of videos to load at a time
-var limit = 10;
+const limit = 10;
 
 // Offset to start loading videos from
-var offset = limit;
+let offset = limit;
 
 // Load More Button
-var loadMoreButton = document.getElementById("load-more");
+const loadMoreButton = document.getElementById("load-more");
 
 // Add click event listener to Load More Button
 loadMoreButton.addEventListener("click", function () {
