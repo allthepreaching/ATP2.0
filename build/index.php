@@ -92,7 +92,7 @@
             <div class="w-95vw flex flex-col items-center justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
-                <div id="video-cards" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-1">
+                <div id="video-cards" class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-2">
 
                     <!-- Video Cards -->
                     <?php
@@ -149,7 +149,7 @@
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="h-2/3 flex flex-row items-center justify-start mt-1">
+                                <div class="h-2/3 flex flex-row items-center justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
                                     <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer">
