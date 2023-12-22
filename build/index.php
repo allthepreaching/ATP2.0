@@ -92,7 +92,7 @@
             <div class="w-95vw flex flex-col items-center justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
-                <div id="video-cards" class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center gap-2">
+                <div id="video-cards" class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 place-items-center gap-2">
 
                     <!-- Video Cards -->
                     <?php
@@ -140,7 +140,7 @@
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                                <div class="video-card aspect-w-16 h-[300px] xl:h-[405px] flex flex-col items-start justify-start overflow-hidden rounded-lg"
+                                <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg"
                                 x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->
@@ -149,7 +149,7 @@
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="h-2/3 flex flex-row items-center justify-start mt-1 mb-4">
+                                <div class="w-full h-2/3 flex flex-row items-center justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
                                     <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer">
@@ -159,23 +159,23 @@
                                     </div>
 
                                     <!-- Information -->
-                                    <div class="h-full flex flex-row items-start justify-start pt-2">
+                                    <div class="w-full h-full flex flex-row items-start justify-between pt-2">
                                     
-                                    <div class="h-10 mb-1 mr-10" title="' . $videoTitle . '">
-                                    
-                                            <!-- Video Title -->
-                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
+                                        <div class="h-10 mb-1 mr-10" title="' . $videoTitle . '">
+                                        
+                                                <!-- Video Title -->
+                                                <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
 
-                                            <!-- Channel Name -->
-                                            <span class="text-small font-bold text-gray-400 cursor-pointer">
-                                                ' . $videoPreacher . '
-                                            </span>
-                                            <br>
+                                                <!-- Channel Name -->
+                                                <span class="text-small font-bold text-gray-400 cursor-pointer">
+                                                    ' . $videoPreacher . '
+                                                </span>
+                                                <br>
 
-                                            <!-- Video Views & Time since posted -->
-                                            ';
-                            include "inc/inc.random-views-dates.php";
-                            echo '</div>
+                                                <!-- Video Views & Time since posted -->
+                                                ';
+                                        include "inc/inc.random-views-dates.php";
+                                        echo '</div>
 
                                         <!-- Video Menu Wrapper -->
                                         <div class="w-1/12 h-full flex flex-col items-end justify-start pt-2 relative">

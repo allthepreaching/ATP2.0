@@ -16,15 +16,15 @@ $diff = date_diff(date_create($randomDate), date_create(date('Y-m-d')));
 // Format the time since posted
 $timeSincePosted = '';
 if ($diff->y > 0) {
-    $timeSincePosted = $diff->y . ($diff->y > 1 ? ' Years Ago' : ' Year Ago');
+    $timeSincePosted = $diff->y . ($diff->y > 1 ? ' Years' : ' Year');
 } elseif ($diff->m > 0) {
-    $timeSincePosted = $diff->m . ($diff->m > 1 ? ' Months Ago' : ' Month Ago');
+    $timeSincePosted = $diff->m . ($diff->m > 1 ? ' Months' : ' Month');
 } elseif ($diff->d > 6) {
     $weeks = floor($diff->d / 7);
     $days = $diff->d % 7;
-    $timeSincePosted = $weeks . ($weeks > 1 ? ' Weeks Ago' : ' Week Ago');
+    $timeSincePosted = $weeks . ($weeks > 1 ? ' Weeks' : ' Week');
 } else {
-    $timeSincePosted = $diff->d . ($diff->d > 1 ? ' Days Ago' : ' Day Ago');
+    $timeSincePosted = $diff->d . ($diff->d > 1 ? ' Days' : ' Day');
 }
 
 // Replace the line that displays the number of views and the time since posted

@@ -4,6 +4,10 @@ module.exports = {
   content: ["./build/*.{html,js,php}", "./build/**/*.{html,js,php}"],
   theme: {
     extend: {
+      screens: {
+        "4k": "3840px",
+        "1080p": "1920px",
+      },
       backgroundImage: {
         "fade-right": "linear-gradient(to right, #000, transparent)",
         "fade-left": "linear-gradient(to left, #000, transparent)",
