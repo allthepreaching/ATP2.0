@@ -136,6 +136,31 @@
                             $videoAvatar = $row['pic_url']; // Video Avatar
                             $videoMainCategory = $row['main_category']; // Video Main Category
                             $dateCreated = $row['created_at']; // Video Created At Date
+                            $views = $row['views']; // Video Views
+
+                            // Determine plural or not based on number of views
+                            $clicksText = $views == 1 ? ' Click' : ' Clicks';
+
+                            // Calculate the difference between the video live date and the current date
+                            $diff = date_diff(date_create($dateLive), date_create(date('Y-m-d H:i:s')));
+
+                            // Format the time since posted
+                            $timeSincePosted = '';
+                            if ($diff->y > 0) {
+                                $timeSincePosted = $diff->y . ($diff->y > 1 ? ' Years' : ' Year');
+                            } elseif ($diff->m > 0) {
+                                $timeSincePosted = $diff->m . ($diff->m > 1 ? ' Months' : ' Month');
+                            } elseif ($diff->d > 0) {
+                                $timeSincePosted = $diff->d . ($diff->d > 1 ? ' Days' : ' Day');
+                            } elseif ($diff->h > 0) {
+                                $timeSincePosted = $diff->h . ($diff->h > 1 ? ' Hours' : ' Hour');
+                            } elseif ($diff->i > 0) {
+                                $timeSincePosted = $diff->i . ($diff->i > 1 ? ' Minutes' : ' Minute');
+                            } elseif ($diff->s > 30) {
+                                $timeSincePosted = $diff->s . ' Seconds';
+                            } else {
+                                $timeSincePosted = 'Just Now';
+                            }
 
                             // Output a video card for each video
                             echo '
@@ -163,19 +188,20 @@
                                     
                                         <div class="h-10 mb-1 mr-10" title="' . $videoTitle . '">
                                         
-                                                <!-- Video Title -->
-                                                <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
+                                            <!-- Video Title -->
+                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
 
-                                                <!-- Channel Name -->
-                                                <span class="text-small font-bold text-gray-400 cursor-pointer">
-                                                    ' . $videoPreacher . '
-                                                </span>
-                                                <br>
+                                            <!-- Channel Name -->
+                                            <span class="text-small font-bold text-gray-400 cursor-pointer">
+                                                ' . $videoPreacher . '
+                                            </span>
+                                            <br>
 
-                                                <!-- Video Views & Time since posted -->
-                                                ';
-                                        include "inc/inc.random-views-dates.php";
-                                        echo '</div>
+                                            <!-- Video Views & Time since posted -->
+                                            <span class="text-xs font-bold text-gray-400">
+                                                ' . $views . $clicksText . ' | ' . $timeSincePosted . '
+                                            </span>
+                                        </div>
 
                                         <!-- Video Menu Wrapper -->
                                         <div class="w-1/12 h-full flex flex-col items-end justify-start pt-2 relative">
