@@ -174,7 +174,7 @@
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="w-full h-2/3 flex flex-row items-center justify-start mt-1 mb-4">
+                                <div class="w-full h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
                                     <a href="pages/category.php?id=' . $videoId . '">
@@ -201,8 +201,8 @@
                                             <br>
 
                                             <!-- Video Views & Time since posted -->
-                                            <span class="text-xs font-bold text-gray-400" title="' . $views . $clicksText . ' | ' . $timeSincePosted . '">
-                                                ' . $views . $clicksText . ' | ' . $timeSincePosted . '
+                                            <span class="text-xs font-bold text-[#990000]" title="' . $views . $clicksText . ' | ' . $timeSincePosted . '">
+                                                ' . $views . $clicksText . ' &loz; ' . $timeSincePosted . '
                                             </span>
                                         </div>
 
