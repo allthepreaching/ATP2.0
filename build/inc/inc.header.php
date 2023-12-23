@@ -1,6 +1,6 @@
 <?php
 
-include_once 'inc.wamp.php';
+include_once 'dbh-local.php';
 
 session_set_cookie_params([
     'samesite' => 'None', // None, Lax or Strict

@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<!-- Home Page -->
+<!-- Video Page -->
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
 
     <!-- Content -->

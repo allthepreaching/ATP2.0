@@ -1,5 +1,5 @@
 // Number of videos to load at a time
-const limit = 10;
+const limit = 12;
 
 // Offset to start loading videos from
 let offset = limit;

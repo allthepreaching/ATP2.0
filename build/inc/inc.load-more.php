@@ -4,13 +4,33 @@ include_once 'inc.wamp.php';
 
 // Get the offset and limit from the GET parameters
 $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
-$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 12;
+
+// Define bullet point
+$bulletPoint = '&#9679;';
+
+// Get sort column and order from URL parameters
+$sortColumn = isset($_GET['sortColumn']) ? $_GET['sortColumn'] : 'date';
+$sortOrder = isset($_GET['sortOrder']) ? $_GET['sortOrder'] : 'DESC';
+
+// Validate sort column and order
+$allowedColumns = ['vid_title', 'date'];
+$allowedOrders = ['ASC', 'DESC'];
+
+if (!in_array($sortColumn, $allowedColumns) || !in_array($sortOrder, $allowedOrders)) {
+    die('Invalid sort column or order');
+}
 
 // Select all from videos sort by created_at
-$sql = "SELECT * FROM videos WHERE vid_category = 'salvation' ORDER BY vid_title ASC LIMIT $limit OFFSET $offset";
+$sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT $limit OFFSET $offset";
 
 // Execute the query
 $result = $conn->query($sql);
+
+// Check if there are any errors in the SQL query
+if ($conn->error) {
+    die("SQL query failed: " . $conn->error);
+}
 
 // Check if there are any results
 if ($result->num_rows > 0) {
@@ -23,52 +43,90 @@ if ($result->num_rows > 0) {
         $videoCategory = $row['search_category']; // Video Category
         $videoPreacher = $row['vid_preacher']; // Video Preacher
         $videoTitle = $row['vid_title']; // Video Title
-        $dateLive = $row['date']; // Video Live Date
+        $videoDate = $row['date']; // Video Live Date
         $videoUrl = $row['vid_url']; // Video URL
         $videoThumb = $row['thumb_url']; // Video Thumbnail
         $videoAvatar = $row['pic_url']; // Video Avatar
         $videoMainCategory = $row['main_category']; // Video Main Category
-        $dateCreated = $row['created_at']; // Video Created At Date
+        $dateCreated = $row['created_at']; // Record Created At Date
+        $clicks = $row['clicks']; // Video Clicks
+
+        // Format the number of clicks
+        if ($clicks >= 1000 && $clicks < 1000000) {
+            $clicks = round($clicks / 1000, 1) . 'k';
+        } elseif ($clicks >= 1000000 && $clicks < 1000000000) {
+            $clicks = round($clicks / 1000000, 2) . 'M';
+        } elseif ($clicks >= 1000000000) {
+            $clicks = round($clicks / 1000000000, 2) . 'B';
+        }
+
+        // Determine plural or not based on number of clicks
+        $clicksText = $clicks == 1 ? ' Click' : ' Clicks';
+
+        // Calculate the difference between the video live date and the current date
+        $diff = date_diff(date_create($videoDate), date_create(date('Y-m-d H:i:s')));
+
+        // Format the time since posted
+        $timeSincePosted = '';
+        if ($diff->y > 0) {
+            $timeSincePosted = $diff->y . ($diff->y > 1 ? ' Years' : ' Year');
+        } elseif ($diff->m > 0) {
+            $timeSincePosted = $diff->m . ($diff->m > 1 ? ' Months' : ' Month');
+        } elseif ($diff->d > 0) {
+            $timeSincePosted = $diff->d . ($diff->d > 1 ? ' Days' : ' Day');
+        } elseif ($diff->h > 0) {
+            $timeSincePosted = $diff->h . ($diff->h > 1 ? ' Hours' : ' Hour');
+        } elseif ($diff->i > 0) {
+            $timeSincePosted = $diff->i . ($diff->i > 1 ? ' Minutes' : ' Minute');
+        } elseif ($diff->s > 30) {
+            $timeSincePosted = $diff->s . ' Seconds';
+        } else {
+            $timeSincePosted = 'Just Now';
+        }
 
         // Output a video card for each video
         echo '
         <!-- Video Card -->
-            <div class="video-card aspect-w-16 h-[300px] flex flex-col items-start justify-start overflow-hidden mr-2 rounded-lg"
+            <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg"
             x-data=\'{ videoId: "' . $videoId . '" }\'>
 
             <!-- Video Thumbnail -->
-            <a href="pages/video.php?id=' . $videoId . '">
-                <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full h-full object-cover">
+            <a href="pages/video.php?id=' . $videoId . '" title="' . $videoTitle . '">
+                <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="h-full object-center">
             </a>
             
             <!-- Video Data -->
-            <div class="w-full h-2/3 flex flex-row items-center justify-start mt-6">
+            <div class="w-full h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
 
                 <!-- Avatar -->
-                <div class="w-auto h-full flex items-start justify-center pt-2 mr-1 cursor-pointer">
-                    <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
-                        <img src="' . $videoAvatar . '" alt="' . $videoPreacher . '" class="w-full h-full object-cover">
+                <a href="pages/category.php?id=' . $videoId . '">
+                    <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer" title="' . $videoCategory . '">
+                        <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
+                            <img src="' . $videoAvatar . '" alt="' . $videoCategory . '" class="w-full h-full object-cover">
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Information -->
-                <div class="w-full h-full flex flex-row items-start justify-start pt-2">
+                <div class="w-full h-full flex flex-row items-start justify-between pt-2">
                 
-                <div class="w-full h-10 mb-1 mr-10" title="' . $videoTitle . '">
-                
+                    <div class="h-10 mb-1 mr-10">
+                    
                         <!-- Video Title -->
-                        <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer">' . $videoTitle . '</span>
+                        
+                        <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer" title="' . $videoTitle . '">' . $videoTitle . '</span>
 
                         <!-- Channel Name -->
-                        <span class="text-small font-bold text-gray-400 cursor-pointer">
-                            ' . $videoPreacher . '
+                        <span class="text-small font-bold text-gray-400 cursor-pointer" title="' . $videoCategory . '">
+                            ' . $videoCategory . '
                         </span>
                         <br>
 
-                        <!-- Video Views & Time since posted -->
-                        ';
-        include "inc.random-views-dates.php";
-        echo '</div>
+                        <!-- Video Clicks & Time since posted -->
+                        <span class="flex items-center text-xs font-bold text-white" title="' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . (($videoDate != '0000-00-00') ? ' ' . $bulletPoint . ' ' . date('m/d/Y', strtotime($videoDate)) : '') . '">
+                            ' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . '
+                        </span>
+                    </div>
 
                     <!-- Video Menu Wrapper -->
                     <div class="w-1/12 h-full flex flex-col items-end justify-start pt-2 relative">
@@ -78,8 +136,7 @@ if ($result->num_rows > 0) {
 
                             <svg class="w-6 h-6" viewBox="-6.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
-                                <title>menu_option [#1374]</title>
-                                <desc>Created with Sketch.</desc>
+                                <title>Video Menu</title>
                                 <defs>
 
                                 </defs>
@@ -99,7 +156,7 @@ if ($result->num_rows > 0) {
                         <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-auto px-2 py-1 bg-gray-600 rounded-lg hidden z-50" id="popup-menu" onmouseover="event.stopPropagation();" onmouseout="event.stopPropagation();">
 
                             <!-- Video Menu -->
-                            <div class="w-full flex flex-col items-start justify-start cursor-pointer">
+                            <div class="flex flex-col items-start justify-start cursor-pointer">
 
                                 <!-- Add To Queue -->
                                 <div class="whitespace-nowrap flex items-center justify-start px-2 mb-1 h-8 w-full bg-gray-800 text-white hover:text-black rounded-lg text-sm hover:bg-white">

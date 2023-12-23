@@ -52,13 +52,13 @@
         </div>
     </div>
 
-    <!-- Content -->
+    <!-- Home Page Content -->
     <div id="content-home" class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
 
-        <!-- Newest Content Section -->
+        <!-- Content Section -->
         <section>
 
-            <!-- Newest Content Header & Filter -->
+            <!-- Content Header & Filter -->
             <div class="flex flex-row items-center justify-between bg-black font-bold text-white text-2xl pl-4 mb-2 relative">
 
                 <!-- Header -->
@@ -88,7 +88,7 @@
                 </div>
             </div>
 
-            <!-- Newest Content Container -->
+            <!-- Content Container -->
             <div class="w-95vw flex flex-col items-center justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
@@ -182,7 +182,7 @@
                                 x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->
-                                <a href="pages/video.php?id=' . $videoId . '">
+                                <a href="pages/video.php?id=' . $videoId . '" title="' . $videoTitle . '">
                                     <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="h-full object-center">
                                 </a>
                                 
