@@ -26,12 +26,12 @@
 
             <!-- Social Links -->
             <div class="social-footer flex flex-row items-center justify-between">
-                <a href="https://www.buymeacoffee.com/allthepreaching"><img src="../img/icons/iconBMC.png" alt="BMC" class="w-8 h-8 mr-4"></a>
-                <a href="https://github.com/allthepreaching"><img src="../img/icons/iconGH.png" alt="GitHub" class="w-8 h-8 mr-4"></a>
-                <a href="https://www.facebook.com/allthepreaching/"><img src="../img/icons/iconFB.png" alt="Facebook" class="w-8 h-8 mr-4"></a>
-                <a href="https://www.instagram.com/allthepreaching/"><img src="../img/icons/iconIG.png" alt="Instagram" class="w-8 h-8 mr-4"></a>
-                <a href="https://twitter.com/ALLthePREACHING"><img src="../img/icons/iconTW.png" alt="Twitter" class="w-8 h-8 mr-4"></a>
-                <a href="https://www.youtube.com/channel/UCiUIhW4qAvrjaHSEue0ANQQ"><img src="../img/icons/iconYT.png" alt="YouTube" class="w-8 h-8 mr-4"></a>
+                <a href="https://www.buymeacoffee.com/allthepreaching"><img src="img/icons/iconBMC.png" alt="BMC" class="w-8 h-8 mr-4"></a>
+                <a href="https://github.com/allthepreaching"><img src="img/icons/iconGH.png" alt="GitHub" class="w-8 h-8 mr-4"></a>
+                <a href="https://www.facebook.com/allthepreaching/"><img src="img/icons/iconFB.png" alt="Facebook" class="w-8 h-8 mr-4"></a>
+                <a href="https://www.instagram.com/allthepreaching/"><img src="img/icons/iconIG.png" alt="Instagram" class="w-8 h-8 mr-4"></a>
+                <a href="https://twitter.com/ALLthePREACHING"><img src="img/icons/iconTW.png" alt="Twitter" class="w-8 h-8 mr-4"></a>
+                <a href="https://www.youtube.com/channel/UCiUIhW4qAvrjaHSEue0ANQQ"><img src="img/icons/iconYT.png" alt="YouTube" class="w-8 h-8 mr-4"></a>
             </div>
 
             <!-- Side Nav Section Separator -->

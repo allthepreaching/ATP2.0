@@ -1429,6 +1429,6 @@ session_start();
 
         <!-- Side Nav Footer -->
         <div>
-            <?php include_once 'inc/inc.footer.php'; ?>
+            <?php include_once '../inc/inc.footer.php'; ?>
         </div>
     </div>
