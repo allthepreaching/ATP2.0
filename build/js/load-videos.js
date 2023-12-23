@@ -18,6 +18,7 @@ loadMoreButton.addEventListener("click", function () {
 
       // Update the offset
       offset += limit;
+      runVideoMenuScript();
     })
     .catch((error) => console.error(error));
 });
