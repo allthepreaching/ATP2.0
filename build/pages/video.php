@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
         <div id="video-content-left" class="h-full overflow-y-scroll transition-all duration-500" :class="{ 'w-full md:w-[450px] lg:w-[600px] xl:w-[800px] 2xl:w-[1000px]': !open, 'w-full md:w-[450px] lg:w-[600px] xl:w-[800px] 2xl:w-[1000px] translate-x-1': open }">
 
             <!-- Video Player Container -->
-            <div class="video-container paused" data-volume-level="high">
+            <div class="video-container max-h-[600px] paused" data-volume-level="high">
 
                 <!-- Video Controls Container -->
                 <div class="video-controls-container">
@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
                     <div class="controls">
 
                         <!-- Rewind Button -->
-                        <button class="play-pause-btn">
+                        <button class="rewind-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                                 <path fill="currentColor" d="M860-240 500-480l360-240v480Zm-400 0L100-480l360-240v480Zm-80-240Zm400 0Zm-400 90v-180l-136 90 136 90Zm400 0v-180l-136 90 136 90Z" />
                             </svg>
@@ -58,7 +58,7 @@ if (isset($_GET['id'])) {
                         </button>
 
                         <!-- Fast Forward Button -->
-                        <button class="play-pause-btn">
+                        <button class="forward-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                                 <path fill="currentColor" d="M100-240v-480l360 240-360 240Zm400 0v-480l360 240-360 240ZM180-480Zm400 0Zm-400 90 136-90-136-90v180Zm400 0 136-90-136-90v180Z" />
                             </svg>
@@ -372,13 +372,15 @@ if (isset($_GET['id'])) {
                 // Get the result
                 $result = $stmt->get_result();
 
-                // Fetch the video
+                // Fetch the video data
                 $video = $result->fetch_assoc();
                 $videoUrl = $video['vid_url'];
+                $videoThumb = $video['thumb_url'];
 
                 echo '
                 <!-- Video Input -->
-                <video src="' . $videoUrl . '">'
+                <video src="' . $videoUrl . '" poster="' . $videoThumb . '">
+                ';
                 ?>
 
                 </video>

@@ -799,6 +799,10 @@ video {
   display: none;
 }
 
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -845,6 +849,26 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.max-h-1 {
+  max-height: 0.25rem;
+}
+
+.max-h-\[\] {
+  max-height: ;
+}
+
+.max-h-\[810px\] {
+  max-height: 810px;
+}
+
+.max-h-\[0px\] {
+  max-height: 0px;
+}
+
+.max-h-\[600px\] {
+  max-height: 600px;
 }
 
 .w-0 {
@@ -1159,6 +1183,11 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .p-0 {

@@ -96,6 +96,10 @@
 
                     <!-- Video Cards -->
                     <?php
+
+                    // Define bullet point
+                    $bulletPoint = '&#9679;';
+
                     // Get sort column and order from URL parameters
                     $sortColumn = isset($_GET['sortColumn']) ? $_GET['sortColumn'] : 'date';
                     $sortOrder = isset($_GET['sortOrder']) ? $_GET['sortOrder'] : 'DESC';
@@ -109,7 +113,7 @@
                     }
 
                     // Select all from videos where...
-                    $sql = "SELECT * FROM videos WHERE vid_category = 'fsanderson' ORDER BY $sortColumn $sortOrder LIMIT 10";
+                    $sql = "SELECT * FROM videos ORDER BY $sortColumn $sortOrder LIMIT 10";
 
                     // Execute the query
                     $result = $conn->query($sql);
@@ -179,7 +183,7 @@
 
                                 <!-- Video Thumbnail -->
                                 <a href="pages/video.php?id=' . $videoId . '">
-                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="h-full object-cover">
+                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="h-full object-center">
                                 </a>
                                 
                                 <!-- Video Data -->
@@ -210,8 +214,8 @@
                                             <br>
 
                                             <!-- Video Clicks & Time since posted -->
-                                            <span class="flex items-center text-xs font-bold text-white" title="' . $clicks . $clicksText . ' &#9679; ' . $timeSincePosted . (($videoDate != '0000-00-00') ? ' &#9679; ' . date('m/d/Y', strtotime($videoDate)) : '') . '">
-                                                ' . $clicks . $clicksText . ' &#9679; ' . $timeSincePosted . '
+                                            <span class="flex items-center text-xs font-bold text-white" title="' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . (($videoDate != '0000-00-00') ? ' ' . $bulletPoint . ' ' . date('m/d/Y', strtotime($videoDate)) : '') . '">
+                                                ' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . '
                                             </span>
                                         </div>
 
