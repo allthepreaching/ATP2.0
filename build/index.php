@@ -113,7 +113,7 @@
                     }
 
                     // Select all from videos where...
-                    $sql = "SELECT * FROM videos ORDER BY $sortColumn $sortOrder LIMIT 10";
+                    $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
 
                     // Execute the query
                     $result = $conn->query($sql);
@@ -178,7 +178,7 @@
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                                <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg"
+                                <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg"
                                 x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->

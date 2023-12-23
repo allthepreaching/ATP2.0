@@ -7,6 +7,7 @@ module.exports = {
       screens: {
         "4k": "3840px",
         "1080p": "1920px",
+        "2k": "2500px",
       },
       backgroundImage: {
         "fade-right": "linear-gradient(to right, #000, transparent)",
