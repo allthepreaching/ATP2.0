@@ -8,6 +8,18 @@ session_set_cookie_params([
     'httponly' => true, // true or false
 ]);
 
+// Check if the 'id' parameter is set in the URL
+if (isset($_GET['id'])) {
+
+    // Get the video ID from the URL
+    $videoId = $_GET['id'];
+} else {
+
+    // Redirect to the home page if the video ID is not set
+    header('Location: ../index.php');
+    exit();
+}
+
 session_start();
 
 ?>
