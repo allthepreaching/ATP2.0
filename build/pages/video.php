@@ -347,7 +347,7 @@ include_once '../inc/inc.header.php';
                 <?php
 
                 // SQL query to fetch the video
-                $sql = "SELECT * FROM videos WHERE id = ?";
+                $sql = "SELECT id, vid_url, thumb_url FROM videos WHERE id = ?";
 
                 // Prepare the SQL statement
                 $stmt = $conn->prepare($sql);
@@ -358,18 +358,16 @@ include_once '../inc/inc.header.php';
                 // Execute the SQL statement
                 $stmt->execute();
 
-                // Get the result
-                $result = $stmt->get_result();
+                // Bind the result to variables
+                $stmt->bind_result($videoId, $videoUrl, $videoThumb);
 
                 // Fetch the video data
-                $video = $result->fetch_assoc();
-                $videoUrl = $video['vid_url'];
-                $videoThumb = $video['thumb_url'];
-
-                echo '
-                <!-- Video Input -->
-                <video src="' . $videoUrl . '" poster="' . $videoThumb . '">
-                ';
+                while ($stmt->fetch()) {
+                    echo '
+                    <!-- Video Input -->
+                    <video src="' . $videoUrl . '" poster="' . $videoThumb . '">
+                    ';
+                }
                 ?>
 
                 </video>
