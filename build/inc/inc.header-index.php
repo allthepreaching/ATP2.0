@@ -2,6 +2,12 @@
 
 include_once 'inc.wamp.php';
 
+session_set_cookie_params([
+    'samesite' => 'None', // None, Lax or Strict
+    'secure' => true, // true or false
+    'httponly' => true, // true or false
+]);
+
 session_start();
 
 ?>

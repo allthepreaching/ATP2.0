@@ -1446,14 +1446,6 @@ video {
 }
 
 @media (min-width: 2500px) {
-  .\32k\:h-\[380px\] {
-    height: 380px;
-  }
-
-  .\32k\:h-\[300px\] {
-    height: 300px;
-  }
-
   .\32k\:h-\[350px\] {
     height: 350px;
   }
