@@ -1,6 +1,13 @@
 <?php
 
-include_once '../inc/inc.header.php';
+include_once "inc/inc.header-index.php";
+
+// Run a query to fetch the unique search_category values
+$sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
+$result = $conn->query($sql);
+
+// Fetch the results and store them in an array
+$categories = $result->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -420,14 +427,6 @@ include_once '../inc/inc.header.php';
                     <div data-tag="all-videos" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</div>
 
                     <?php
-
-                    // Run a query to fetch the unique search_category values
-                    $sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
-                    $result = $conn->query($sql);
-
-                    // Fetch the results and store them in an array
-                    $categories = $result->fetch_all(MYSQLI_ASSOC);
-
                     // Loop through the array and create a tag for each search_category
                     foreach ($categories as $category) {
                         $class = $category["search_category"] == 'Newest' ? 'newest-tag' : '';
