@@ -109,7 +109,7 @@
                     }
 
                     // Select all from videos where...
-                    $sql = "SELECT * FROM videos WHERE vid_category = 'scanderson' ORDER BY $sortColumn $sortOrder LIMIT 10";
+                    $sql = "SELECT * FROM videos WHERE vid_category = 'fsanderson' ORDER BY $sortColumn $sortOrder LIMIT 10";
 
                     // Execute the query
                     $result = $conn->query($sql);
@@ -130,19 +130,28 @@
                             $videoCategory = $row['search_category']; // Video Category
                             $videoPreacher = $row['vid_preacher']; // Video Preacher
                             $videoTitle = $row['vid_title']; // Video Title
-                            $dateLive = $row['date']; // Video Live Date
+                            $videoDate = $row['date']; // Video Live Date
                             $videoUrl = $row['vid_url']; // Video URL
                             $videoThumb = $row['thumb_url']; // Video Thumbnail
                             $videoAvatar = $row['pic_url']; // Video Avatar
                             $videoMainCategory = $row['main_category']; // Video Main Category
-                            $dateCreated = $row['created_at']; // Video Created At Date
-                            $views = $row['views']; // Video Views
+                            $dateCreated = $row['created_at']; // Record Created At Date
+                            $clicks = $row['clicks']; // Video Clicks
 
-                            // Determine plural or not based on number of views
-                            $clicksText = $views == 1 ? ' Click' : ' Clicks';
+                            // Format the number of clicks
+                            if ($clicks >= 1000 && $clicks < 1000000) {
+                                $clicks = round($clicks / 1000, 1) . 'k';
+                            } elseif ($clicks >= 1000000 && $clicks < 1000000000) {
+                                $clicks = round($clicks / 1000000, 2) . 'M';
+                            } elseif ($clicks >= 1000000000) {
+                                $clicks = round($clicks / 1000000000, 2) . 'B';
+                            }
+
+                            // Determine plural or not based on number of clicks
+                            $clicksText = $clicks == 1 ? ' Click' : ' Clicks';
 
                             // Calculate the difference between the video live date and the current date
-                            $diff = date_diff(date_create($dateLive), date_create(date('Y-m-d H:i:s')));
+                            $diff = date_diff(date_create($videoDate), date_create(date('Y-m-d H:i:s')));
 
                             // Format the time since posted
                             $timeSincePosted = '';
@@ -200,9 +209,9 @@
                                             </span>
                                             <br>
 
-                                            <!-- Video Views & Time since posted -->
-                                            <span class="text-xs font-bold text-[#990000]" title="' . $views . $clicksText . ' | ' . $timeSincePosted . '">
-                                                ' . $views . $clicksText . ' &loz; ' . $timeSincePosted . '
+                                            <!-- Video Clicks & Time since posted -->
+                                            <span class="flex items-center text-xs font-bold text-white" title="' . $clicks . $clicksText . ' &#9679; ' . $timeSincePosted . (($videoDate != '0000-00-00') ? ' &#9679; ' . date('m/d/Y', strtotime($videoDate)) : '') . '">
+                                                ' . $clicks . $clicksText . ' &#9679; ' . $timeSincePosted . '
                                             </span>
                                         </div>
 

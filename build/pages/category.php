@@ -1,15 +1,64 @@
-<?php include_once "inc/inc.header-index.php"; ?>
+<?php include_once "../inc/inc.header.php"; ?>
 
-<!-- Category Page -->
+<!-- Home Page -->
 <div class="flex flex-col items-center justify-start fixed h-full bg-black translate-y-16 transition-all duration-500" :class="{ 'w-full': !open, 'w-[calc(100vw-289px)] translate-x-72': open }">
+
+    <!-- Tags Container -->
+    <div class="tags-container w-95vw flex flex-row items-center justify-center bg-black text-white rounded-full fixed top-5">
+
+        <!-- Fade In -->
+        <div class="absolute inset-y-0 left-0 w-10 bg-fade-right z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-10 bg-fade-left z-10"></div>
+
+        <!-- Arrows Overlay -->
+        <div class="absolute inset-0 flex items-center justify-between -mx-2 pointer-events-none z-50">
+
+            <!-- Left Arrow -->
+            <div id="arrow-left" class="arrow-left flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
+                <svg class="w-8 h-8 hover:text-[#990000]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 6L9 12L15 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+
+            <!-- Right Arrow -->
+            <div id="arrow-right" class="arrow-right flex items-center justify-center opacity-50 bg-black rounded-full transition-all duration-300 hover:opacity-100 pointer-events-auto cursor-pointer">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
+
+            <!-- All Tag -->
+            <div data-tag="all-videos" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</div>
+
+            <?php
+
+            // Run a query to fetch the unique search_category values
+            $sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
+            $result = $conn->query($sql);
+
+            // Fetch the results and store them in an array
+            $categories = $result->fetch_all(MYSQLI_ASSOC);
+
+            // Loop through the array and create a tag for each search_category
+            foreach ($categories as $category) {
+                $class = $category["search_category"] == 'Newest' ? 'newest-tag' : '';
+                echo '<div class="' . $class . ' tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm">' . $category["search_category"] . '</div>';
+            }
+            ?>
+        </div>
+    </div>
 
     <!-- Content -->
     <div id="content-home" class="w-95vw h-full flex flex-col items-start justify-start bg-black text-white fixed top-20 overflow-y-auto pb-36">
 
-        <!-- Content Section -->
+        <!-- Newest Content Section -->
         <section>
 
-            <!-- Content Header & Filter -->
+            <!-- Newest Content Header & Filter -->
             <div class="flex flex-row items-center justify-between bg-black font-bold text-white text-2xl pl-4 mb-2 relative">
 
                 <!-- Header -->
@@ -39,7 +88,7 @@
                 </div>
             </div>
 
-            <!-- Content Container -->
+            <!-- Newest Content Container -->
             <div class="w-95vw flex flex-col items-center justify-center bg-black text-white px-2 relative">
 
                 <!-- Video Cards Container -->
@@ -81,19 +130,28 @@
                             $videoCategory = $row['search_category']; // Video Category
                             $videoPreacher = $row['vid_preacher']; // Video Preacher
                             $videoTitle = $row['vid_title']; // Video Title
-                            $dateLive = $row['date']; // Video Live Date
+                            $videoDate = $row['date']; // Video Post Date
                             $videoUrl = $row['vid_url']; // Video URL
                             $videoThumb = $row['thumb_url']; // Video Thumbnail
                             $videoAvatar = $row['pic_url']; // Video Avatar
                             $videoMainCategory = $row['main_category']; // Video Main Category
-                            $dateCreated = $row['created_at']; // Video Created At Date
-                            $views = $row['views']; // Video Views
+                            $dateCreated = $row['created_at']; // Record Created At Date
+                            $clicks = $row['clicks']; // Video Clicks
 
-                            // Determine plural or not based on number of views
-                            $clicksText = $views == 1 ? ' Click' : ' Clicks';
+                            // Format the number of clicks
+                            if ($clicks >= 1000 && $clicks < 1000000) {
+                                $clicks = round($clicks / 1000, 1) . 'k';
+                            } elseif ($clicks >= 1000000 && $clicks < 1000000000) {
+                                $clicks = round($clicks / 1000000, 2) . 'M';
+                            } elseif ($clicks >= 1000000000) {
+                                $clicks = round($clicks / 1000000000, 2) . 'B';
+                            }
+
+                            // Determine plural or not based on number of clicks
+                            $clicksText = $clicks == 1 ? ' Click' : ' Clicks';
 
                             // Calculate the difference between the video live date and the current date
-                            $diff = date_diff(date_create($dateLive), date_create(date('Y-m-d H:i:s')));
+                            $diff = date_diff(date_create($videoDate), date_create(date('Y-m-d H:i:s')));
 
                             // Format the time since posted
                             $timeSincePosted = '';
@@ -125,7 +183,7 @@
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="w-full h-2/3 flex flex-row items-center justify-start mt-1 mb-4">
+                                <div class="w-full h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
                                     <a href="pages/category.php?id=' . $videoId . '">
@@ -151,9 +209,9 @@
                                             </span>
                                             <br>
 
-                                            <!-- Video Views & Time since posted -->
-                                            <span class="text-xs font-bold text-gray-400" title="' . $views . $clicksText . ' | ' . $timeSincePosted . '">
-                                                ' . $views . $clicksText . ' | ' . $timeSincePosted . '
+                                            <!-- Video Clicks & Time since posted -->
+                                            <span class="text-xs font-bold text-[#990000]" title="' . $clicks . $clicksText . ' | ' . $timeSincePosted . '">
+                                                ' . $clicks . $clicksText . ' &loz; ' . $timeSincePosted . '
                                             </span>
                                         </div>
 
