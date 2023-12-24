@@ -1,6 +1,6 @@
 <?php
 
-include_once "inc/inc.header-index.php";
+include_once "../inc/inc.header.php";
 
 // Run a query to fetch the unique search_category values
 $sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';

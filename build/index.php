@@ -3,7 +3,7 @@
 include_once "inc/inc.header-index.php";
 
 // Run a query to fetch the unique search_category values
-$sql = 'SELECT DISTINCT search_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
+$sql = 'SELECT DISTINCT search_category, vid_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
 $result = $conn->query($sql);
 
 // Fetch the results and store them in an array
@@ -43,15 +43,19 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
         <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
 
             <!-- All Tag -->
-            <div data-tag="all-videos" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</div>
-
-            <?php
-            // Loop through the array and create a tag for each search_category
-            foreach ($categories as $category) {
-                $class = $category["search_category"] == 'Newest' ? 'newest-tag' : '';
-                echo '<div class="' . $class . ' tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm">' . $category["search_category"] . '</div>';
-            }
-            ?>
+            <form method="POST" action="inc/inc.tag-click.php">
+                <input type="hidden" name="tag" value="all-videos">
+                <button type="submit" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</button>
+            </form>
+            <?php var_dump($categories); ?>
+            <!-- Loop through the array and create a form for each search_category -->
+            <?php foreach ($categories as $category) : ?>
+                <?php $class = $category["search_category"] == 'Newest' ? 'newest-tag' : ''; ?>
+                <form method="POST" action="inc/inc.tag-click.php">
+                    <input type="hidden" name="tag" value="<?php echo $category['vid_category']; ?>">
+                    <button type="submit" class="<?php echo $class; ?> tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm"><?php echo $category["search_category"]; ?></button>
+                </form>
+            <?php endforeach; ?>
         </div>
     </div>
 
@@ -115,8 +119,18 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                         die('Invalid sort column or order');
                     }
 
-                    // Select all from videos where...
-                    $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
+                    // Get the clicked tag from the session variables
+                    $clickedTag = $_SESSION['clickedTag'] ?? 'all-videos';
+
+                    // Prepare the SQL query
+                    if ($clickedTag == 'all-videos') {
+                        $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
+                    } else {
+
+                        // Escape the tag to prevent SQL injection
+                        $clickedTag = mysqli_real_escape_string($conn, $clickedTag);
+                        $sql = "SELECT * FROM videos WHERE vid_category = '$clickedTag' ORDER BY $sortColumn $sortOrder LIMIT 12";
+                    }
 
                     // Execute the query
                     $result = $conn->query($sql);
