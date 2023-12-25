@@ -1,3 +1,4 @@
+const controlsContainer = document.getElementById("video-controls-container");
 const playPauseBtn = document.querySelector(".play-pause-btn");
 const theaterBtn = document.querySelector(".theater-btn");
 const fullScreenBtn = document.querySelector(".full-screen-btn");
@@ -204,8 +205,24 @@ function togglePlay() {
 
 video.addEventListener("play", () => {
   videoContainer.classList.remove("paused");
+  controlsContainer.classList.add("hidden"); // Hide the controls when the video is playing
 });
 
 video.addEventListener("pause", () => {
   videoContainer.classList.add("paused");
+  controlsContainer.classList.remove("hidden"); // Show the controls when the video is paused
+});
+
+// Show controls when the video is playing and the user hovers over the video
+video.addEventListener("mouseover", () => {
+  if (!video.paused) {
+    controlsContainer.classList.remove("hidden");
+  }
+});
+
+// Hide controls when the mouse leaves the video and the video is playing
+video.addEventListener("mouseout", () => {
+  if (!video.paused) {
+    controlsContainer.classList.add("hidden");
+  }
 });

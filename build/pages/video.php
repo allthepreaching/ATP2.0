@@ -24,7 +24,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
             <div class="video-container max-h-[600px] paused" data-volume-level="high">
 
                 <!-- Video Controls Container -->
-                <div class="video-controls-container">
+                <div id="video-controls-container" class="video-controls-container">
 
                     <!-- Timeline Container -->
                     <div class="timeline-container">
