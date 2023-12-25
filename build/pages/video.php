@@ -438,8 +438,9 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
 
             <!-- Suggested Videos -->
             <div class="flex flex-col items-center justify-center">
+
                 <!-- Video Cards Container -->
-                <div id="video-cards" class="grid grid-cols-1 place-items-center gap-2">
+                <div id="video-cards-suggested" class="w-full grid grid-cols-1 place-items-center gap-2">
 
                     <!-- Video Cards -->
                     <?php
@@ -535,54 +536,62 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                                <div class="video-card w-full h-[250px] flex flex-col items-center justify-center overflow-hidden rounded-lg"
+                                <div class="video-card w-full h-[100px] flex flex-row items-start justify-start overflow-hidden rounded-lg"
                                 x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->
-                                <a href="pages/video.php?id=' . $videoId . '" title="' . $videoTitle . '">
-                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="h-[150px] object-center">
+                                <a href="video.php?id=' . $videoId . '" title="' . $videoTitle . '">
+                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-[200px] h-[90px] mr-1">
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="w-full h-2/3 flex flex-row items-start justify-start mb-1">
-
-                                    <!-- Avatar -->
-                                    <a href="pages/category.php?id=' . $videoId . '">
-                                        <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer" title="' . $videoCategory . '">
-                                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
-                                                <img src="' . $videoAvatar . '" alt="' . $videoCategory . '" class="w-full h-full object-cover">
-                                            </div>
-                                        </div>
-                                    </a>
+                                <div class="w-[250px] h-full">
 
                                     <!-- Information -->
-                                    <div class="w-full h-full flex flex-row items-start justify-between pt-2">
+                                    <div class="w-full   h-full flex flex-row items-stretch justify-between">
                                     
-                                        <div class="h-10 mb-1">
+                                        <!-- Video Title & Channel Name & Clicks Container -->
+                                        <div class="h-10">
                                         
                                             <!-- Video Title -->
-                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer" title="' . $videoTitle . '">' . $videoTitle . '</span>
+                                            <a href="video.php?id=' . $videoId . '">
+                                                <span class="text-xs font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer" title="' . $videoTitle . '">' . $videoTitle . '</span>
+                                            </a>
 
-                                            <!-- Channel Name -->
-                                            <span class="text-small font-bold text-gray-400 cursor-pointer" title="' . $videoCategory . '">
-                                                ' . $videoCategory . '
-                                            </span>
-                                            <br>
+                                            <!-- Avatar & Channel Name Container -->
+                                            <div class="flex flex-row items-center justify-start mb-1">
+
+                                                <!-- Avatar -->
+                                                <a href="category.php?id=' . $videoCategory . '">
+                                                    <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer" title="' . $videoCategory . '">
+                                                        <div class="w-6 h-6 rounded-full overflow-hidden bg-gray-100">
+                                                            <img src="' . $videoAvatar . '" alt="' . $videoCategory . '" class="w-full h-full object-cover">
+                                                        </div>
+                                                    </div>
+                                                </a>
+
+                                                <!-- Channel Name -->
+                                                <a href="category.php?id=' . $videoCategory . '">
+                                                    <span class="text-xs font-bold text-gray-400 cursor-pointer" title="' . $videoCategory . '">
+                                                        ' . $videoCategory . '
+                                                    </span>
+                                                </a>
+                                            </div>
 
                                             <!-- Video Clicks & Time since posted -->
-                                            <span class="flex items-center text-xs font-bold text-white" title="' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . (($videoDate != '0000-00-00') ? ' ' . $bulletPoint . ' ' . date('m/d/Y', strtotime($videoDate)) : '') . '">
-                                                ' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . '
-                                            </span>
+                                            <div class="flex flex-row items-center justify-start">
+                                                <span class="flex items-center text-xs font-bold text-white" title="' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . (($videoDate != '0000-00-00') ? ' ' . $bulletPoint . ' ' . date('m/d/Y', strtotime($videoDate)) : '') . '">
+                                                    ' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . '
+                                                </span>
+                                            </div>
                                         </div>
 
                                         <!-- Video Menu Wrapper -->
-                                        <div class="w-1/12 h-full flex flex-col items-end justify-start pt-2 relative">
+                                        <div class="h-full flex flex-col items-end justify-start relative">
 
                                             <!-- Video Menu Icon -->
                                             <div class="menu-icon flex items-center justify-center cursor-pointer">
-                                            <svg fill="#ffffff" class="w-4 h-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h7v7H0V0zm2 2v3h3V2H2zM0 9h7v7H0V9zm9-9h7v7H9V0zm2 2v3h3V2h-3zM9 9h7v7H9V9zm2 2v3h3v-3h-3zm-9 0v3h3v-3H2z" fill-rule="evenodd"/>
-                                        </svg>
+                                                <svg class="w-6 h-6" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke="#ffffff"><rect x="31.5" y="31.5" width="1" height="1" transform="rotate(90 32 32)"/><rect x="31.5" y="47" width="1" height="1" transform="rotate(90 32 47.5)"/><rect x="31.5" y="16" width="1" height="1" transform="rotate(90 32 16.5)"/></svg>
                                             </div>
 
                                             <!-- Video Menu Container -->

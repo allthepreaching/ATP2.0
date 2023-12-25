@@ -204,7 +204,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="w-full h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
+                                <div class="h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
                                     <a href="pages/category.php?id=' . $videoId . '">
@@ -216,7 +216,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                                     </a>
 
                                     <!-- Information -->
-                                    <div class="w-full h-full flex flex-row items-start justify-between pt-2">
+                                    <div class="h-full flex flex-row items-start justify-between pt-2">
                                     
                                         <div class="h-10 mb-1 mr-10">
                                         
@@ -237,27 +237,12 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                                         </div>
 
                                         <!-- Video Menu Wrapper -->
-                                        <div class="w-1/12 h-full flex flex-col items-end justify-start pt-2 relative">
+                                        <div class="w-1/12 h-full flex flex-col items-end justify-start relative">
 
                                             <!-- Video Menu Icon -->
                                             <div class="menu-icon flex items-center justify-center cursor-pointer">
 
-                                                <svg class="w-6 h-6" viewBox="-6.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-                                                    <title>Video Menu</title>
-                                                    <defs>
-
-                                                    </defs>
-                                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <g id="Dribbble-Light-Preview" transform="translate(-306.000000, -800.000000)" fill="#ffffff">
-                                                            <g id="icons" transform="translate(56.000000, 160.000000)">
-                                                                <path d="M253.5,658 C252.857167,658 252.333333,657.551 252.333333,657 C252.333333,656.449 252.857167,656 253.5,656 C254.142833,656 254.666667,656.449 254.666667,657 C254.666667,657.551 254.142833,658 253.5,658 M253.5,654 C251.566833,654 250,655.343 250,657 C250,658.657 251.566833,660 253.5,660 C255.433167,660 257,658.657 257,657 C257,655.343 255.433167,654 253.5,654 M253.5,651 C252.857167,651 252.333333,650.551 252.333333,650 C252.333333,649.449 252.857167,649 253.5,649 C254.142833,649 254.666667,649.449 254.666667,650 C254.666667,650.551 254.142833,651 253.5,651 M253.5,647 C251.566833,647 250,648.343 250,650 C250,651.657 251.566833,653 253.5,653 C255.433167,653 257,651.657 257,650 C257,648.343 255.433167,647 253.5,647 M253.5,642 C254.142833,642 254.666667,642.449 254.666667,643 C254.666667,643.551 254.142833,644 253.5,644 C252.857167,644 252.333333,643.551 252.333333,643 C252.333333,642.449 252.857167,642 253.5,642 M253.5,646 C255.433167,646 257,644.657 257,643 C257,641.343 255.433167,640 253.5,640 C251.566833,640 250,641.343 250,643 C250,644.657 251.566833,646 253.5,646" id="menu_option-[#1374]">
-
-                                                                </path>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </svg>
+                                            <svg class="w-10 h-10" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke="#ffffff"><rect x="31.5" y="31.5" width="1" height="1" transform="rotate(90 32 32)"/><rect x="31.5" y="47" width="1" height="1" transform="rotate(90 32 47.5)"/><rect x="31.5" y="16" width="1" height="1" transform="rotate(90 32 16.5)"/></svg>
                                             </div>
 
                                             <!-- Video Menu Container -->

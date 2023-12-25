@@ -23,6 +23,11 @@
   -webkit-box-orient: vertical;
 }
 
+/* Top margin for first child suggested videos on video page */
+#video-cards-suggested > :first-child {
+  margin-top: 1rem;
+}
+
 /* Remove the scroll bars from the tags bar */
 #tags {
   scrollbar-width: none; /* For Firefox */
@@ -40,6 +45,16 @@
 }
 
 #content-home::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari and Opera */
+}
+
+/* Remove the scroll bars from the index page content section */
+#video-content-right {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+#video-content-right::-webkit-scrollbar {
   display: none; /* For Chrome, Safari and Opera */
 }
 
