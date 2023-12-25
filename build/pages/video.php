@@ -37,14 +37,14 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                     <div class="controls">
 
                         <!-- Rewind Button -->
-                        <button class="rewind-btn">
+                        <button class="rewind-btn" title="Left Arrow = Rewind">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                                 <path fill="currentColor" d="M860-240 500-480l360-240v480Zm-400 0L100-480l360-240v480Zm-80-240Zm400 0Zm-400 90v-180l-136 90 136 90Zm400 0v-180l-136 90 136 90Z" />
                             </svg>
                         </button>
 
                         <!-- Play Pause Button -->
-                        <button class="play-pause-btn">
+                        <button class="play-pause-btn" title="Spacebar/K = Play/Pause">
                             <svg class="play-icon" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
                             </svg>
@@ -54,7 +54,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                         </button>
 
                         <!-- Fast Forward Button -->
-                        <button class="forward-btn">
+                        <button class="fast-forward-btn" title="Right Arrow = Fast Forward">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                                 <path fill="currentColor" d="M100-240v-480l360 240-360 240Zm400 0v-480l360 240-360 240ZM180-480Zm400 0Zm-400 90 136-90-136-90v180Zm400 0 136-90-136-90v180Z" />
                             </svg>
@@ -62,7 +62,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
 
                         <!-- Volume Container -->
                         <div class="volume-container">
-                            <button class="mute-btn">
+                            <button class="mute-audio-btn" title="M = Mute Audio">
                                 <svg class="volume-high-icon" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
                                 </svg>
@@ -86,26 +86,26 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                         </div>
 
                         <!-- Captions Container -->
-                        <button class="captions-btn">
+                        <button class="closed-captions-btn" title="(C)">
                             <svg viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M18,11H16.5V10.5H14.5V13.5H16.5V13H18V14A1,1 0 0,1 17,15H14A1,1 0 0,1 13,14V10A1,1 0 0,1 14,9H17A1,1 0 0,1 18,10M11,11H9.5V10.5H7.5V13.5H9.5V13H11V14A1,1 0 0,1 10,15H7A1,1 0 0,1 6,14V10A1,1 0 0,1 7,9H10A1,1 0 0,1 11,10M19,4H5C3.89,4 3,4.89 3,6V18A2,2 0 0,0 5,20H19A2,2 0 0,0 21,18V6C21,4.89 20.1,4 19,4Z" />
                             </svg>
                         </button>
 
                         <!-- Speed Container -->
-                        <button class="speed-btn wide-btn">
+                        <button class="speed-btn wide-btn" title="(+), (-)">
                             1x
                         </button>
 
                         <!-- Mini player -->
-                        <button class="mini-player-btn">
+                        <button class="mini-player-btn" title="(P)">
                             <svg viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z" />
                             </svg>
                         </button>
 
                         <!-- Theater Mode -->
-                        <button class="theater-btn">
+                        <button class="theater-mode-btn" title="(T)">
                             <svg class="tall" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" />
                             </svg>
@@ -115,8 +115,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                         </button>
 
                         <!-- Full Screen -->
-                        <button class="full-screen-btn">
-                            <svg class="open" viewBox="0 0 24 24">
+                        <button class="fullscreen-btn" title="(F)"> <svg class="open" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
                             </svg>
                             <svg class="close" viewBox="0 0 24 24">
@@ -130,22 +129,10 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                             <!-- Video Menu Icon -->
                             <div class="menu-icon flex items-center justify-center cursor-pointer">
 
-                                <svg class="w-6 h-6" viewBox="-6.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-                                    <title>menu_option [#1374]</title>
-                                    <desc>Created with Sketch.</desc>
-                                    <defs>
-
-                                    </defs>
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="Dribbble-Light-Preview" transform="translate(-306.000000, -800.000000)" fill="#cccccc">
-                                            <g id="icons" transform="translate(56.000000, 160.000000)">
-                                                <path d="M253.5,658 C252.857167,658 252.333333,657.551 252.333333,657 C252.333333,656.449 252.857167,656 253.5,656 C254.142833,656 254.666667,656.449 254.666667,657 C254.666667,657.551 254.142833,658 253.5,658 M253.5,654 C251.566833,654 250,655.343 250,657 C250,658.657 251.566833,660 253.5,660 C255.433167,660 257,658.657 257,657 C257,655.343 255.433167,654 253.5,654 M253.5,651 C252.857167,651 252.333333,650.551 252.333333,650 C252.333333,649.449 252.857167,649 253.5,649 C254.142833,649 254.666667,649.449 254.666667,650 C254.666667,650.551 254.142833,651 253.5,651 M253.5,647 C251.566833,647 250,648.343 250,650 C250,651.657 251.566833,653 253.5,653 C255.433167,653 257,651.657 257,650 C257,648.343 255.433167,647 253.5,647 M253.5,642 C254.142833,642 254.666667,642.449 254.666667,643 C254.666667,643.551 254.142833,644 253.5,644 C252.857167,644 252.333333,643.551 252.333333,643 C252.333333,642.449 252.857167,642 253.5,642 M253.5,646 C255.433167,646 257,644.657 257,643 C257,641.343 255.433167,640 253.5,640 C251.566833,640 250,641.343 250,643 C250,644.657 251.566833,646 253.5,646" id="menu_option-[#1374]">
-
-                                                </path>
-                                            </g>
-                                        </g>
-                                    </g>
+                                <svg class="w-10 h-10 hover:stroke-white" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke="#cccccc">
+                                    <rect x="31.5" y="31.5" width="1" height="1" transform="rotate(90 32 32)" />
+                                    <rect x="31.5" y="47" width="1" height="1" transform="rotate(90 32 47.5)" />
+                                    <rect x="31.5" y="16" width="1" height="1" transform="rotate(90 32 16.5)" />
                                 </svg>
                             </div>
 

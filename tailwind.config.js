@@ -4,6 +4,9 @@ module.exports = {
   content: ["./build/*.{html,js,php}", "./build/**/*.{html,js,php}"],
   theme: {
     extend: {
+      colors: {
+        white: '#ffffff',
+      },
       screens: {
         "4k": "3840px",
         "1080p": "1920px",
@@ -24,6 +27,11 @@ module.exports = {
         custom: "40px 0 0 40px",
       },
       borderWidth: { right: "0" },
+    },
+  },
+  variants: {
+    extend: {
+      stroke: ['hover'], // Now can use hover:stroke-'colors setup in tailwind.config.js'
     },
   },
   plugins: [

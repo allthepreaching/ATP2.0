@@ -21,7 +21,7 @@ document.addEventListener("keydown", (e) => {
 
   switch (e.key.toLowerCase()) {
     case " ":
-      if (tagName === "button") return;
+      if (tagName !== "button") togglePlay();
       break;
     case "k":
       togglePlay();

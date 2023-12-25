@@ -241,8 +241,8 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
 
                                             <!-- Video Menu Icon -->
                                             <div class="menu-icon flex items-center justify-center cursor-pointer">
-
-                                            <svg class="w-10 h-10" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke="#ffffff"><rect x="31.5" y="31.5" width="1" height="1" transform="rotate(90 32 32)"/><rect x="31.5" y="47" width="1" height="1" transform="rotate(90 32 47.5)"/><rect x="31.5" y="16" width="1" height="1" transform="rotate(90 32 16.5)"/></svg>
+                                                <svg class="w-10 h-10" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke="#ffffff"><rect x="31.5" y="31.5" width="1" height="1" transform="rotate(90 32 32)"/><rect x="31.5" y="47" width="1" height="1" transform="rotate(90 32 47.5)"/><rect x="31.5" y="16" width="1" height="1" transform="rotate(90 32 16.5)"/>
+                                                </svg>
                                             </div>
 
                                             <!-- Video Menu Container -->

@@ -1342,6 +1342,10 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:stroke-white:hover {
+  stroke: #ffffff;
+}
+
 .hover\:text-\[\#990000\]:hover {
   --tw-text-opacity: 1;
   color: rgb(153 0 0 / var(--tw-text-opacity));
