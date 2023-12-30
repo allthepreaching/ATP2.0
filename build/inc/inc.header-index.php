@@ -58,7 +58,7 @@ session_start();
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
     <!-- Title -->
-    <title>ALLthePREACHING</title>
+    <title>ATP|2.0</title>
 </head>
 <!-- Body -->
 

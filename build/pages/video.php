@@ -357,14 +357,12 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
 
                 // Fetch the video data
                 while ($stmt->fetch()) {
-                    echo '
-                    <!-- Video Input -->
-                    <video src="' . $videoUrl . '" poster="' . $videoThumb . '">
-                    ';
-                }
-                ?>
 
-                </video>
+                ?>
+                    <!-- Video Input -->
+                    <video src="<?= $videoUrl ?>" poster="<?= $videoThumb ?>">
+                    </video>
+                <?php } ?>
             </div>
 
             <!-- Comments Section -->
