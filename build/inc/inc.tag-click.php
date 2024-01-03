@@ -15,11 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Print the clicked tag
     echo 'Clicked tag: ' . $clickedTag . '<br>';
+
+    // Redirect back to the index page with the clicked tag as a query parameter
+    header('Location: ../index.php?tag=' . urlencode($clickedTag));
+    exit;
 } else {
 
     // Form was not submitted
     echo 'Form was not submitted.<br>';
 }
-// Redirect back to the index page
-header('Location: video.php');
-exit;

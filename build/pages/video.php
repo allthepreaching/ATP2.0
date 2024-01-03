@@ -341,7 +341,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                 <?php
 
                 // SQL query to fetch the video
-                $sql = "SELECT id, vid_url, thumb_url FROM videos WHERE id = ?";
+                $sql = "SELECT id, vid_url FROM videos WHERE id = ?";
 
                 // Prepare the SQL statement
                 $stmt = $conn->prepare($sql);
@@ -353,14 +353,15 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                 $stmt->execute();
 
                 // Bind the result to variables
-                $stmt->bind_result($videoId, $videoUrl, $videoThumb);
+                $stmt->bind_result($videoId, $videoUrl);
 
                 // Fetch the video data
                 while ($stmt->fetch()) {
 
+                    $thumb = str_replace('.mp4', '.jpg', $videoUrl); // Video Thumbnail modified to .jpg
                 ?>
                     <!-- Video Input -->
-                    <video src="<?= $videoUrl ?>" poster="<?= $videoThumb ?>">
+                    <video src="<?php echo $videoUrl ?>" poster="<?php echo $thumb ?>">
                     </video>
                 <?php } ?>
             </div>
@@ -479,7 +480,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                             $videoTitle = $row['vid_title']; // Video Title
                             $videoDate = $row['date']; // Video Live Date
                             $videoUrl = $row['vid_url']; // Video URL
-                            $videoThumb = $row['thumb_url']; // Video Thumbnail
+                            $videoThumb = str_replace('.mp4', '.jpg', $row['vid_url']); // Video Thumbnail
                             $videoAvatar = $row['pic_url']; // Video Avatar
                             $videoMainCategory = $row['main_category']; // Video Main Category
                             $dateCreated = $row['created_at']; // Record Created At Date
@@ -521,7 +522,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                                <div class="video-card w-full h-[100px] flex flex-row items-start justify-start overflow-hidden rounded-lg"
+                                <div class="video-card h-[100px] flex flex-row items-start justify-start overflow-hidden rounded-lg"
                                 x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->

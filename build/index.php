@@ -9,6 +9,8 @@ $result = $conn->query($sql);
 // Fetch the results and store them in an array
 $categories = $result->fetch_all(MYSQLI_ASSOC);
 
+isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clickedTag = 'all-videos';
+
 ?>
 
 <!-- Home Page -->
@@ -47,7 +49,13 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                 <input type="hidden" name="tag" value="all-videos">
                 <button type="submit" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</button>
             </form>
-            <?php var_dump($categories); ?>
+
+            <!-- Shorts Tag -->
+            <form method="POST" action="inc/inc.tag-click.php">
+                <input type="hidden" name="tag" value="short-videos">
+                <button type="submit" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">Short Videos</button>
+            </form>
+
             <!-- Loop through the array and create a form for each search_category -->
             <?php foreach ($categories as $category) : ?>
                 <?php $class = $category["search_category"] == 'Newest' ? 'newest-tag' : ''; ?>
@@ -153,11 +161,20 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                             $videoTitle = $row['vid_title']; // Video Title
                             $videoDate = $row['date']; // Video Live Date
                             $videoUrl = $row['vid_url']; // Video URL
-                            $videoThumb = $row['thumb_url']; // Video Thumbnail
+                            $videoThumbUrl = $row['thumb_url']; // Video Thumbnail URL
+                            $videoThumb = str_replace('.mp4', '.jpg', $row['vid_url']); // Video Thumbnail
                             $videoAvatar = $row['pic_url']; // Video Avatar
                             $videoMainCategory = $row['main_category']; // Video Main Category
                             $dateCreated = $row['created_at']; // Record Created At Date
                             $clicks = $row['clicks']; // Video Clicks
+
+                            // Get the width and height of the video thumbnail
+                            list($width, $height) = getimagesize($videoThumb);
+
+                            // Skip this iteration if the video is not a short video and the height is greater than 720
+                            if ($clickedTag !== 'short-videos' && $height > 720) {
+                                continue;
+                            }
 
                             // Format the number of clicks
                             if ($clicks >= 1000 && $clicks < 1000000) {
@@ -200,7 +217,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
 
                                 <!-- Video Thumbnail -->
                                 <a href="pages/video.php?id=' . $videoId . '" title="' . $videoTitle . '">
-                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="h-full object-center">
+                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full object-contain">
                                 </a>
                                 
                                 <!-- Video Data -->
