@@ -50,14 +50,15 @@ document.addEventListener("DOMContentLoaded", function () {
     tagLink.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // Remove the 'selected' class from all tags
-      tagLinks.forEach((tag) => {
-        tag.classList.remove("selected");
-        tag.style.backgroundColor = ""; // Reset background color
-        tag.style.color = ""; // Reset text color
-      });
+      // Remove the 'selected' class and the styles from the previously selected tag
+      let selectedTag = document.querySelector(".tag.selected");
+      if (selectedTag) {
+        selectedTag.classList.remove("selected");
+        selectedTag.style.backgroundColor = ""; // Reset background color
+        selectedTag.style.color = ""; // Reset text color
+      }
 
-      // Add the 'selected' class to the clicked tag
+      // Add the 'selected' class and the styles to the clicked tag
       this.classList.add("selected");
       this.style.backgroundColor = "white"; // Set background color to white
       this.style.color = "black"; // Set text color to black
@@ -80,6 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
         left: tagCenter,
         behavior: "smooth",
       });
+
+      // Get the tag value from the data-tag attribute
+      const tagValue = this.dataset.tag;
+
+      // Redirect to the new URL with the tag as a query parameter
+      window.location.href = "index.php?tag=" + encodeURIComponent(tagValue);
     });
   });
 
@@ -96,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Get the 'Newest' tag
-  let newestTag = document.getElementsByClassName("newest-tag")[0];
+  // Get the all-videos tag
+  let allVideosTag = document.querySelector('[data-tag="all-videos-tag"]');
 
-  // Simulate a click on the 'Newest' tag
-  newestTag.click();
+  // Simulate a click on the 'All-videos tag
+  // allVideosTag.click();
 });

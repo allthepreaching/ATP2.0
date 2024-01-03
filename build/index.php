@@ -3,7 +3,7 @@
 include_once "inc/inc.header-index.php";
 
 // Run a query to fetch the unique search_category values
-$sql = 'SELECT DISTINCT search_category, vid_category FROM videos WHERE search_category != "" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
+$sql = 'SELECT DISTINCT search_category, vid_category FROM videos WHERE search_category != "" AND vid_category != "newest" AND vid_category NOT LIKE "pro%" ORDER BY search_category ASC';
 $result = $conn->query($sql);
 
 // Fetch the results and store them in an array
@@ -45,24 +45,20 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
         <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
 
             <!-- All Tag -->
-            <form method="POST" action="inc/inc.tag-click.php">
-                <input type="hidden" name="tag" value="all-videos">
-                <button type="submit" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">All Videos</button>
-            </form>
+            <div class="selected tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-white text-black px-3 mx-1 h-8 w-auto rounded-lg text-sm" data-tag="all-videos-tag">
+                All Videos
+            </div>
 
             <!-- Shorts Tag -->
-            <form method="POST" action="inc/inc.tag-click.php">
-                <input type="hidden" name="tag" value="short-videos">
-                <button type="submit" class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm">Short Videos</button>
-            </form>
+            <div class="tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-gray-800 text-white px-3 mx-1 h-8 w-auto rounded-lg text-sm" data-tag="short-videos">
+                Short Videos
+            </div>
 
-            <!-- Loop through the array and create a form for each search_category -->
+            <!-- Loop through the array and create a div for each search_category -->
             <?php foreach ($categories as $category) : ?>
-                <?php $class = $category["search_category"] == 'Newest' ? 'newest-tag' : ''; ?>
-                <form method="POST" action="inc/inc.tag-click.php">
-                    <input type="hidden" name="tag" value="<?php echo $category['vid_category']; ?>">
-                    <button type="submit" class="<?php echo $class; ?> tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm"><?php echo $category["search_category"]; ?></button>
-                </form>
+                <div class="tag cursor-pointer whitespace-nowrap flex items-center justify-center px-3 mx-1 h-8 w-auto bg-gray-800 text-white rounded-lg text-sm" data-tag="<?php echo $category['vid_category']; ?>">
+                    <?php echo $category["search_category"]; ?>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>
@@ -127,11 +123,8 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                         die('Invalid sort column or order');
                     }
 
-                    // Get the clicked tag from the session variables
-                    $clickedTag = $_SESSION['clickedTag'] ?? 'all-videos';
-
                     // Prepare the SQL query
-                    if ($clickedTag == 'all-videos') {
+                    if ($clickedTag == 'all-videos-tag') {
                         $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
                     } else {
 
@@ -172,9 +165,9 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                             list($width, $height) = getimagesize($videoThumb);
 
                             // Skip this iteration if the video is not a short video and the height is greater than 720
-                            if ($clickedTag !== 'short-videos' && $height > 720) {
-                                continue;
-                            }
+                            // if ($clickedTag !== 'short-videos' && $height > 720) {
+                            //     continue;
+                            // }
 
                             // Format the number of clicks
                             if ($clicks >= 1000 && $clicks < 1000000) {
@@ -212,7 +205,7 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                             // Output a video card for each video
                             echo '
                             <!-- Video Card -->
-                                <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg"
+                                <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg relative"
                                 x-data=\'{ videoId: "' . $videoId . '" }\'>
 
                                 <!-- Video Thumbnail -->
@@ -221,7 +214,7 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                                 </a>
                                 
                                 <!-- Video Data -->
-                                <div class="h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
+                                <div class="video-data h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
                                     <a href="pages/category.php?id=' . $videoId . '">
