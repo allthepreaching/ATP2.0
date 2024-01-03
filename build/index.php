@@ -189,8 +189,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
 
                             <!-- Output a video card for each video -->
                             <!-- Video Card -->
-                            <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg" x-data={ videoId: <?php $videoId ?> }>
-
+                            <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg" x-data="{ videoId: '<?php echo $videoId ?>' }">
                                 <!-- Video Thumbnail -->
                                 <a href="pages/video.php?id=<?php echo $videoId ?>" title="<?php echo $videoTitle ?>">
                                     <img src="<?php echo $videoThumb ?>" alt="<?php echo $videoTitle ?>" class="w-full object-contain">
