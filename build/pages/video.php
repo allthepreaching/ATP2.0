@@ -446,18 +446,8 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
                         die('Invalid sort column or order');
                     }
 
-                    // Get the clicked tag from the session variables
-                    $clickedTag = $_SESSION['clickedTag'] ?? 'all-videos';
-
                     // Prepare the SQL query
-                    if ($clickedTag == 'all-videos') {
-                        $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
-                    } else {
-
-                        // Escape the tag to prevent SQL injection
-                        $clickedTag = mysqli_real_escape_string($conn, $clickedTag);
-                        $sql = "SELECT * FROM videos WHERE vid_category = '$clickedTag' ORDER BY $sortColumn $sortOrder LIMIT 12";
-                    }
+                    $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
 
                     // Execute the query
                     $result = $conn->query($sql);

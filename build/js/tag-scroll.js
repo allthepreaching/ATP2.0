@@ -102,10 +102,4 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.add("selected");
     });
   }
-
-  // Get the all-videos tag
-  let allVideosTag = document.querySelector('[data-tag="all-videos-tag"]');
-
-  // Simulate a click on the 'All-videos tag
-  // allVideosTag.click();
 });

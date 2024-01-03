@@ -9,8 +9,6 @@ $result = $conn->query($sql);
 // Fetch the results and store them in an array
 $categories = $result->fetch_all(MYSQLI_ASSOC);
 
-isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clickedTag = 'all-videos';
-
 ?>
 
 <!-- Home Page -->
@@ -124,14 +122,7 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                     }
 
                     // Prepare the SQL query
-                    if ($clickedTag == 'all-videos-tag') {
-                        $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
-                    } else {
-
-                        // Escape the tag to prevent SQL injection
-                        $clickedTag = mysqli_real_escape_string($conn, $clickedTag);
-                        $sql = "SELECT * FROM videos WHERE vid_category = '$clickedTag' ORDER BY $sortColumn $sortOrder LIMIT 12";
-                    }
+                    $sql = "SELECT * FROM videos WHERE vid_category != 'newest' ORDER BY $sortColumn $sortOrder LIMIT 12";
 
                     // Execute the query
                     $result = $conn->query($sql);
@@ -161,14 +152,6 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                             $dateCreated = $row['created_at']; // Record Created At Date
                             $clicks = $row['clicks']; // Video Clicks
 
-                            // Get the width and height of the video thumbnail
-                            list($width, $height) = getimagesize($videoThumb);
-
-                            // Skip this iteration if the video is not a short video and the height is greater than 720
-                            // if ($clickedTag !== 'short-videos' && $height > 720) {
-                            //     continue;
-                            // }
-
                             // Format the number of clicks
                             if ($clicks >= 1000 && $clicks < 1000000) {
                                 $clicks = round($clicks / 1000, 1) . 'k';
@@ -197,52 +180,52 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                             } elseif ($diff->i > 0) {
                                 $timeSincePosted = $diff->i . ($diff->i > 1 ? ' Minutes' : ' Minute');
                             } elseif ($diff->s > 30) {
-                                $timeSincePosted = $diff->s . ' Seconds';
+                                $timeSincePosted = $diff->s . 'Seconds';
                             } else {
                                 $timeSincePosted = 'Just Now';
                             }
 
-                            // Output a video card for each video
-                            echo '
+                    ?>
+
+                            <!-- Output a video card for each video -->
                             <!-- Video Card -->
-                                <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg relative"
-                                x-data=\'{ videoId: "' . $videoId . '" }\'>
+                            <div class="video-card aspect-w-16 h-[300px] xl:h-[300px] 1080p:h-[300px] 2xl:h-[400px] 2k:h-[350px] 4k:h-[450px] flex flex-col items-start justify-start overflow-hidden rounded-lg" x-data={ videoId: <?php $videoId ?> }>
 
                                 <!-- Video Thumbnail -->
-                                <a href="pages/video.php?id=' . $videoId . '" title="' . $videoTitle . '">
-                                    <img src="' . $videoThumb . '" alt="' . $videoTitle . '" class="w-full object-contain">
+                                <a href="pages/video.php?id=<?php echo $videoId ?>" title="<?php echo $videoTitle ?>">
+                                    <img src="<?php echo $videoThumb ?>" alt="<?php echo $videoTitle ?>" class="w-full object-contain">
                                 </a>
-                                
+
                                 <!-- Video Data -->
                                 <div class="video-data h-2/3 flex flex-row items-start justify-start mt-1 mb-4">
 
                                     <!-- Avatar -->
-                                    <a href="pages/category.php?id=' . $videoId . '">
-                                        <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer" title="' . $videoCategory . '">
+                                    <a href="pages/category.php?id=<?php echo $videoId ?>">
+                                        <div class="h-full flex items-start justify-center pt-2 mr-1 cursor-pointer" title="<?php echo $videoCategory ?>">
                                             <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100">
-                                                <img src="' . $videoAvatar . '" alt="' . $videoCategory . '" class="w-full h-full object-cover">
+                                                <img src="<?php echo $videoAvatar ?>" alt="<?php echo $videoCategory ?>" class="w-full h-full object-cover">
                                             </div>
                                         </div>
                                     </a>
 
                                     <!-- Information -->
                                     <div class="h-full flex flex-row items-start justify-between pt-2">
-                                    
+
                                         <div class="h-10 mb-1 mr-10">
-                                        
+
                                             <!-- Video Title -->
-                                            
-                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer" title="' . $videoTitle . '">' . $videoTitle . '</span>
+
+                                            <span class="text-small font-bold text-white overflow-hidden text-overflow-ellipsis webkit-box webkit-line-clamp-2 webkit-box-orient-vertical cursor-pointer" title="<?php echo $videoTitle ?>"><?php echo $videoTitle ?></span>
 
                                             <!-- Channel Name -->
-                                            <span class="text-small font-bold text-gray-400 cursor-pointer" title="' . $videoCategory . '">
-                                                ' . $videoCategory . '
+                                            <span class="text-small font-bold text-gray-400 cursor-pointer" title="<?php echo $videoCategory ?>">
+                                                <?php echo $videoCategory ?>
                                             </span>
                                             <br>
 
                                             <!-- Video Clicks & Time since posted -->
-                                            <span class="flex items-center text-xs font-bold text-white" title="' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . (($videoDate != '0000-00-00') ? ' ' . $bulletPoint . ' ' . date('m/d/Y', strtotime($videoDate)) : '') . '">
-                                                ' . $clicks . $clicksText . ' ' . $bulletPoint . ' ' . $timeSincePosted . '
+                                            <span class="flex items-center text-xs font-bold text-white" title="<?php echo $clicks . $clicksText . $bulletPoint . $timeSincePosted . (($videoDate != '0000-00-00') ? ' ' . $bulletPoint . ' ' . date('m/d/Y', strtotime($videoDate)) : '') ?>">
+                                                <?php echo $clicks . $clicksText ?> <?php echo $bulletPoint ?> <?php echo $timeSincePosted ?>
                                             </span>
                                         </div>
 
@@ -251,7 +234,10 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
 
                                             <!-- Video Menu Icon -->
                                             <div class="menu-icon flex items-center justify-center cursor-pointer">
-                                                <svg class="w-10 h-10" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke="#ffffff"><rect x="31.5" y="31.5" width="1" height="1" transform="rotate(90 32 32)"/><rect x="31.5" y="47" width="1" height="1" transform="rotate(90 32 47.5)"/><rect x="31.5" y="16" width="1" height="1" transform="rotate(90 32 16.5)"/>
+                                                <svg class="w-10 h-10" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2" stroke="#ffffff">
+                                                    <rect x="31.5" y="31.5" width="1" height="1" transform="rotate(90 32 32)" />
+                                                    <rect x="31.5" y="47" width="1" height="1" transform="rotate(90 32 47.5)" />
+                                                    <rect x="31.5" y="16" width="1" height="1" transform="rotate(90 32 16.5)" />
                                                 </svg>
                                             </div>
 
@@ -457,7 +443,7 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
                                     </div>
                                 </div>
                             </div>
-                            ';
+                    <?php
                         }
                     } else {
                         echo "No videos found";
@@ -467,7 +453,6 @@ isset($_SESSION['clickedTag']) ? $clickedTag = $_SESSION['clickedTag'] : $clicke
 
                 <!-- Load More Button -->
                 <button id="load-more" class="w-3/4 py-2 mt-4 mb-8 border-2 border-white rounded-lg font-bold bg-black text-white text-center hover:bg-white hover:text-black">Load More</button>
-
             </div>
         </section>
     </div>
