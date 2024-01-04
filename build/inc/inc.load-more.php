@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbh.php';
+include_once 'inc.dbh.php';
 
 // Get the offset and limit from the GET parameters
 $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
