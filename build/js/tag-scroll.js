@@ -81,12 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
         left: tagCenter,
         behavior: "smooth",
       });
-
-      // Get the tag value from the data-tag attribute
-      const tagValue = this.dataset.tag;
-
-      // Redirect to the new URL with the tag as a query parameter
-      window.location.href = "index.php?tag=" + encodeURIComponent(tagValue);
     });
   });
 
