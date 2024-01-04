@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbh-local.php';
+include_once 'dbh.php';
 
 session_set_cookie_params([
     'samesite' => 'None', // None, Lax or Strict
