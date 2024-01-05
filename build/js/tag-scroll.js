@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const allVideos = document.querySelector('[data-tag="all-videos"]');
   let startX;
   let scrollLeft;
-  let isDown = true;
-
+  
   // Scroll tags container left or right on mouse drag
   tagsContainer.addEventListener("mousedown", (e) => {
+    isDown = true;
     startX = e.pageX - tagsContainer.offsetLeft;
     scrollLeft = tagsContainer.scrollLeft;
     tagsContainer.style.userSelect = "none"; // Disable text selection
