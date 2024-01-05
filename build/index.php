@@ -43,7 +43,7 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
         <div id="tags" class="tags flex flex-row overflow-x-auto px-3">
 
             <!-- All Tag -->
-            <div class="selected tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-white text-black px-3 mx-1 h-8 w-auto rounded-lg text-sm" data-tag="all-videos-tag">
+            <div class="selected tag cursor-pointer whitespace-nowrap flex items-center justify-center bg-white text-black px-3 mx-1 h-8 w-auto rounded-lg text-sm" data-tag="all-videos">
                 All Videos
             </div>
 

@@ -3,21 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const arrowRight = document.getElementById("arrow-right");
   const tagsContainer = document.getElementById("tags");
   const tagLinks = document.querySelectorAll(".tag");
-  let isDown = false;
+  const allVideos = document.querySelector('[data-tag="all-videos"]');
   let startX;
   let scrollLeft;
+  let isDown = true;
 
   // Scroll tags container left or right on mouse drag
   tagsContainer.addEventListener("mousedown", (e) => {
-    isDown = true;
     startX = e.pageX - tagsContainer.offsetLeft;
     scrollLeft = tagsContainer.scrollLeft;
     tagsContainer.style.userSelect = "none"; // Disable text selection
-  });
-
-  tagsContainer.addEventListener("mouseleave", () => {
-    isDown = false;
-    tagsContainer.style.userSelect = ""; // Re-enable text selection
   });
 
   tagsContainer.addEventListener("mouseup", () => {
@@ -56,6 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedTag.classList.remove("selected");
         selectedTag.style.backgroundColor = ""; // Reset background color
         selectedTag.style.color = ""; // Reset text color
+        allVideos.classList.remove("selected", "bg-white", "text-black");        allVideos.style.backgroundColor = ""; // Reset background color
+        allVideos.style.color = ""; // Reset text color
+        allVideos.style.backgroundColor = "#2d3748"; // Set background color to gray
+        allVideos.style.color = "#ffffff"; // Set text color to white
       }
 
       // Add the 'selected' class and the styles to the clicked tag
